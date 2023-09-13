@@ -1,8 +1,9 @@
-interface FilmInfo {
+export interface FilmInfo {
+  id: number
   name: string
   country: string
   duration: number
-  genre: string[]
+  genres: string[]
   ageLimit: number
   start: Date
   director: string
@@ -24,13 +25,14 @@ interface FilmSession {
 }
 
 const film: FilmInfo = {
+  id: 1,
   imgTitle: `https://avatars.mds.yandex.net/get-kinopoisk-image/9784475/5efa3117-4056-4b50-9485-e30eeb0ffbe6/300x450`,
   name: 'Праздники',
   country: 'Россия',
   ageLimit: 12,
   director: 'Борис Дегчарев',
   duration: 80,
-  genre: ['комедия'],
+  genres: ['комедия'],
   start: new Date(2023, 10, 27),
   starring: [
     'Мария Аронова',
@@ -56,13 +58,14 @@ const film: FilmInfo = {
 }
 
 const secondFilm: FilmInfo = {
+  id: 2,
   imgTitle: `https://cinema5.cinemabox.team/api/v1/movies/9759/poster`,
   ageLimit: 6,
   name: 'Баба Яга. Спасает мир',
   country: 'Россия',
   director: 'Карен Захаров',
   duration: 93,
-  genre: ['комедия', 'семейный'],
+  genres: ['комедия', 'семейный'],
   start: new Date(2023, 9, 5),
   starring: [
     'Ян Цапник',
