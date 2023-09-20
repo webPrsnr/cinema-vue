@@ -1,16 +1,10 @@
 <script setup lang="ts">
 import { ref } from 'vue'
-
-const templateRef = ref<HTMLElement | null>(null)
-defineExpose({
-  templateRef
-})
-
 const array = new Array(40).fill(1)
 const array1 = new Array(8).fill(1)
 </script>
 <template>
-  <section ref="templateRef" class="seats__wrapper">
+  <section class="seats__wrapper">
     <h2 class="seats__title">Доступные места</h2>
     <section class="seats__time">
       <h3>Время</h3>
