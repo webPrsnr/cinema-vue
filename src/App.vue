@@ -1,8 +1,9 @@
 <script setup lang="ts">
 import AppHeader from '@/components/ui/AppHeader.vue'
+import AppMain from './components/AppMain.vue'
 </script>
 
 <template>
   <AppHeader />
-  <div :style="`height:1000px`">Hello world</div>
+  <AppMain />
 </template>
