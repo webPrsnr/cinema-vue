@@ -1,0 +1,50 @@
+.with-tooltip {
+    position: relative;
+}
+
+.with-tooltip::before {
+    content: attr(data-tooltip);
+    opacity: 0;
+    position: absolute;
+    transition: opacity 0.5s;
+    color: #ffffff;
+    text-align: center;
+    padding: 5px;
+    border-radius: 2px;
+    min-width: 60px;
+    background: #5e5d5d;
+    pointer-events: none;
+    z-index: 1;
+    border-radius: 0.25rem;
+}
+
+.with-tooltip::after {
+    transition: opacity 0.5s;
+    opacity: 0;
+    content: "";
+    border-width: 5px;
+    border-style: solid;
+    border-color: #5e5d5d transparent transparent transparent;
+    position: absolute;
+    z-index: 1;
+    pointer-events: none;
+}
+
+.with-tooltip:hover::before,
+.with-tooltip:hover::after,
+.with-tooltip:focus::before,
+.with-tooltip:focus::after {
+    opacity: 1;
+}
+
+.tooltip--top::before {
+    inset-block-end: 120%;
+    inset-inline-start: 145%;
+    margin-inline-start: -60px;
+}
+
+.tooltip--top::after {
+    inset-block-start: -20%;
+    inset-inline-start: 40%;
+    border-color: #5e5d5d transparent transparent transparent;
+}
