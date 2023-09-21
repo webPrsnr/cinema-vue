@@ -4,6 +4,13 @@ import type { RentalDate } from '@/listFilms'
 const props = defineProps<{
   dates: RentalDate[]
 }>()
+const emit = defineEmits<{
+  (e: 'chooseTime', time: string, date: Date): void
+}>()
+
+const chooseSession = (time: string, date: Date) => {
+  emit('chooseTime', time, date)
+}
 </script>
 <template>
   <section class="session__wrapper">
@@ -12,7 +19,7 @@ const props = defineProps<{
       <h2 class="session__time">{{ date.date.toLocaleDateString() }}</h2>
       <div class="times">
         <section class="time" v-for="sess in date.session" :key="sess.time">
-          <h3 class="time__title">{{ sess.time }}</h3>
+          <h3 class="time__title" @click="chooseSession(sess.time, date.date)">{{ sess.time }}</h3>
         </section>
       </div>
     </section>
@@ -46,6 +53,7 @@ const props = defineProps<{
   flex-wrap: wrap;
   gap: 10px;
   padding: 5px 15px;
+  cursor: pointer;
 }
 
 .time {
