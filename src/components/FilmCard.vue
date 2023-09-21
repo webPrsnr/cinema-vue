@@ -1,70 +1,84 @@
 <script setup lang="ts">
 import type { FilmInfo } from '@/listFilms'
 import { converToHour } from '@/utils/convertToHour'
+import FilmSeans from './FilmSeans.vue'
+import { defineAsyncComponent } from 'vue'
+import AppSpinner from './ui/AppSpinner.vue'
+import { useSetSeats } from '@/composable/useSetSeats'
+
+//TODO
+// 1. css
 
 const props = defineProps<{
   card: FilmInfo
 }>()
-console.log(props)
+
+const FilmSeats = defineAsyncComponent({
+  loader: () =>
+    new Promise<any>((res) => {
+      setTimeout(() => res(import('./FilmSeats.vue')), 2000)
+    }),
+  loadingComponent: AppSpinner
+})
+
+const { seats, isSeatsAvailable, setSeats } = useSetSeats(props.card.dates)
+
+const chooseTimeHandler = (time: string, clickedDate: Date) => {
+  seats.value = { time, clickedDate }
+}
 </script>
 <template>
-  <section class="card">
-    <div class="container">
-      <div class="about">
-        <div class="wrapper">
+  <section>
+    <h1>Подробнее о фильме</h1>
+    <div class="wrapper">
+      <div class="wrapper__film">
+        <section class="el">
           <div class="poster" :style="`background-image:url(${props.card.imgTitle})`"></div>
-          <div class="description">
-            <div class="title">
-              {{ props.card.name }}
-            </div>
-            <div class="country_duration">
-              {{ props.card.country }} {{ converToHour(props.card.duration) }}
-            </div>
-            <div class="genre">
-              <span v-for="genre in props.card.genres" :key="genre">{{ genre }}</span>
-            </div>
-            <div class="score">
-              <div class="age_limit">{{ props.card.ageLimit }}+</div>
-            </div>
-            <div class="info">
-              <div class="start">
-                <div class="info_b">Старт проката</div>
-                <div class="info_e">{{ props.card.start }}</div>
-              </div>
-              <div class="start">
-                <div class="info_b">Режисер</div>
-                <div class="info_e">{{ props.card.director }}</div>
-              </div>
-              <div class="start">
-                <div class="info_b">В главных ролях</div>
-                <div class="info_e">
+        </section>
+        <section class="el el__description">
+          <h1>О фильме</h1>
+          <div class="el__description description">
+            <section class="el__year">
+              <h2>Возрастные ограничения</h2>
+            </section>
+            <section class="el__about">
+              <h2>Подробнее о фильме</h2>
+              <div class="info">
+                <div>Старт проката</div>
+                <div>{{ props.card.start.toLocaleDateString() }}</div>
+                <div>Режисер</div>
+                <div>{{ props.card.director }}</div>
+                <div>В главных ролях</div>
+                <div>
                   <span v-for="actor in props.card.starring" :key="actor">{{ `${actor}, ` }}</span>
                 </div>
+                <div>Описание</div>
+                <div>
+                  {{ props.card.description }}
+                </div>
               </div>
-            </div>
-            <div class="descr">{{ props.card.description }}</div>
+            </section>
           </div>
-        </div>
+        </section>
+        <FilmSeans @choose-time="chooseTimeHandler" :dates="props.card.dates" />
+      </div>
+      <div v-show="isSeatsAvailable" class="seats">
+        <FilmSeats v-if="seats" :seats="setSeats" :date="seats.clickedDate" />
       </div>
     </div>
   </section>
 </template>
 <style scoped>
-.container {
-  display: flex;
-  flex: 1 1 0%;
-}
-.about {
-  flex: 1 1 0%;
-  overflow-x: hidden;
-  overflow-y: auto;
-  height: 100%;
-}
 .wrapper {
-  display: flex;
-  box-sizing: border-box;
-  border-width: 0;
-  border-style: solid;
+  display: grid;
+}
+.el {
+  border: 1px solid red;
+}
+.wrapper__film {
+  display: grid;
+  grid-template-columns: max-content 2fr 1fr;
+  grid-column-gap: 0.5rem;
 }
 .poster {
   width: 280px;
@@ -74,66 +88,23 @@ console.log(props)
   overflow: hidden;
   background-position: center;
 }
+.el__description {
+  display: flex;
+  flex-direction: column;
+}
 .description {
-  flex: 1 1 0%;
+  flex-grow: 1;
 }
-.title {
-  display: flex;
-  align-items: flex-end;
-  line-height: 42px;
-  font-weight: 700;
-  font-size: 34px;
-}
-.country_duration {
-  line-height: 24px;
-  font-size: 17px;
-}
-.genre {
-  line-height: 24px;
-  font-size: 17px;
-}
-.score {
-  padding-top: 1.5rem;
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-}
-.age_limit {
-  font-weight: 700;
-  font-size: 17px;
-  border-color: (120, 120, 128, 0.16);
-  border-style: solid;
-  border-width: 2px;
-  border-radius: 0.5rem;
-  justify-content: center;
-  align-items: center;
-  width: 3rem;
-  height: 2rem;
-  display: flex;
-  margin: 6px;
+.el__year {
+  flex-grow: 1;
 }
 .info {
-  margin-top: 2.5rem;
+  display: grid;
+  grid-template-columns: max-content 1fr;
+  grid-column-gap: 10px;
+  grid-row-gap: 5px;
 }
-.start {
-  display: flex;
-  justify-content: space-between;
-}
-.info_b {
-  line-height: 24px;
-  font-size: 17px;
-  width: 180px;
-  width: 180px;
-}
-.info_e {
-  line-height: 24px;
-  font-size: 17px;
-  flex: 1 1 0%;
-}
-
-.descr {
-  line-height: 24px;
-  font-size: 17px;
-  margin-top: 1.5rem;
+.seats {
+  padding: 1.7rem 1rem;
 }
 </style>
