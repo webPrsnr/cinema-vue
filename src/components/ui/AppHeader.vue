@@ -58,6 +58,7 @@ onUnmounted(() => {
   padding: 10px 16px;
   background: #555;
   color: #f1f1f1;
+  z-index: 999;
 }
 
 .sticky {
