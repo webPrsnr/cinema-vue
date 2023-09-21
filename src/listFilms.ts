@@ -13,13 +13,13 @@ export interface FilmInfo {
   imgTitle: string
 }
 
-interface RentalDate {
+export interface RentalDate {
   date: Date
   session: FilmSession[]
 }
 
-interface FilmSession {
-  time: number
+export interface FilmSession {
+  time: string
   totalSeats: number
   reserved: number[]
 }
@@ -50,8 +50,45 @@ const film: FilmInfo = {
     {
       date: new Date(2023, 10, 27),
       session: [
-        { time: 130, totalSeats: 20, reserved: [2, 3, 4, 10] },
-        { time: 240, totalSeats: 20, reserved: [] }
+        { time: '10.00', totalSeats: 48, reserved: [2, 3, 4, 10] },
+        { time: '12.00', totalSeats: 48, reserved: [] },
+        { time: '14.00', totalSeats: 48, reserved: [] },
+        { time: '16.00', totalSeats: 48, reserved: [] },
+        { time: '18.00', totalSeats: 48, reserved: [] },
+        { time: '20.00', totalSeats: 48, reserved: [] }
+      ]
+    },
+    {
+      date: new Date(2023, 10, 28),
+      session: [
+        { time: '10.00', totalSeats: 48, reserved: [2, 3, 4, 10] },
+        { time: '12.00', totalSeats: 48, reserved: [] },
+        { time: '14.00', totalSeats: 48, reserved: [] },
+        { time: '16.00', totalSeats: 48, reserved: [] },
+        { time: '18.00', totalSeats: 48, reserved: [] },
+        { time: '20.00', totalSeats: 48, reserved: [] }
+      ]
+    },
+    {
+      date: new Date(2023, 10, 29),
+      session: [
+        { time: '10.00', totalSeats: 48, reserved: [2, 3, 4, 10] },
+        { time: '12.00', totalSeats: 48, reserved: [] },
+        { time: '14.00', totalSeats: 48, reserved: [] },
+        { time: '16.00', totalSeats: 48, reserved: [] },
+        { time: '18.00', totalSeats: 48, reserved: [] },
+        { time: '20.00', totalSeats: 48, reserved: [] }
+      ]
+    },
+    {
+      date: new Date(2023, 10, 30),
+      session: [
+        { time: '10.00', totalSeats: 48, reserved: [2, 3, 4, 10] },
+        { time: '12.00', totalSeats: 48, reserved: [] },
+        { time: '14.00', totalSeats: 48, reserved: [] },
+        { time: '16.00', totalSeats: 48, reserved: [] },
+        { time: '18.00', totalSeats: 48, reserved: [] },
+        { time: '20.00', totalSeats: 48, reserved: [] }
       ]
     }
   ]
@@ -81,8 +118,12 @@ const secondFilm: FilmInfo = {
     {
       date: new Date(2023, 9, 6),
       session: [
-        { time: 220, totalSeats: 20, reserved: [1, 2, 3, 4, 9, 19] },
-        { time: 30, totalSeats: 20, reserved: [] }
+        { time: '10.00', totalSeats: 20, reserved: [2, 3, 4, 10] },
+        { time: '12.00', totalSeats: 20, reserved: [] },
+        { time: '14.00', totalSeats: 20, reserved: [] },
+        { time: '16.00', totalSeats: 20, reserved: [] },
+        { time: '18.00', totalSeats: 20, reserved: [] },
+        { time: '20.00', totalSeats: 20, reserved: [] }
       ]
     }
   ]
