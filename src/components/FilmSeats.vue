@@ -1,20 +1,28 @@
 <script setup lang="ts">
-import { ref } from 'vue'
-const array = new Array(40).fill(1)
-const array1 = new Array(8).fill(1)
+import type { FilmSession } from '@/listFilms'
+const props = defineProps<{
+  seats: FilmSession
+  date: Date
+}>()
+const isReserved = (seat: number) => props.seats.reserved.includes(seat)
 </script>
 <template>
   <section class="seats__wrapper">
     <h2 class="seats__title">Доступные места</h2>
     <section class="seats__time">
-      <h3>Время</h3>
-      <div>Дата</div>
+      <h3>{{ props.seats.time }}</h3>
+      <div>{{ props.date.toLocaleDateString() }}</div>
     </section>
-    <div class="seats__chairs seats__chairs__top">
-      <div class="seats__chair" v-for="chair in array1" :key="chair"></div>
-    </div>
-    <div class="seats__chairs seats__chairs__middle">
-      <div class="seats__chair" v-for="chair in array" :key="chair"></div>
+    <div class="chairs__wrapper">
+      <div class="seats__chairs">
+        <div
+          class="seats__chair"
+          v-for="chair in props.seats.totalSeats"
+          :key="chair"
+          :class="isReserved(chair) ? `faq__circle_red` : `faq__circle_blue`"
+          v-tooltip.top="chair"
+        ></div>
+      </div>
     </div>
     <section class="seats__faq">
       <div class="faq__circle faq__circle_blue"></div>
@@ -49,14 +57,19 @@ const array1 = new Array(8).fill(1)
   align-items: center;
 }
 
-.seats__chairs {
-  /* background-color: white; */
-  border-radius: 0.5rem;
-  width: 50%;
-  margin: 0 auto;
-  display: grid;
-  gap: 0.5rem;
+.chairs__wrapper {
+  display: flex;
   justify-content: center;
+  align-items: center;
+  margin-top: 5rem;
+}
+.seats__chairs {
+  border-radius: 0.5rem;
+  display: grid;
+  gap: 1.5rem;
+  justify-content: center;
+  grid-template-columns: repeat(8, 1rem);
+  margin-bottom: 0.5rem;
 }
 
 .seats__chairs__middle {
@@ -64,12 +77,10 @@ const array1 = new Array(8).fill(1)
 }
 .seats__chairs__top {
   grid-template-columns: repeat(8, 1rem);
-  margin-top: 5rem;
   margin-bottom: 0.5rem;
 }
 .seats__chair {
-  padding: 0.5rem;
-  background-color: rgb(125, 177, 229);
+  padding: 1rem;
   border-radius: 0.175rem;
   cursor: pointer;
   box-shadow:
