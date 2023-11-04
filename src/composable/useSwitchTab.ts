@@ -1,24 +1,49 @@
 import type { FilmInfo } from '@/listFilms'
 import { useGetObj } from './useGetObj'
-import { type ShallowRef, computed, toValue, ref } from 'vue'
+import { type ShallowRef, computed, toValue, ref, watchEffect, onMounted, onUnmounted } from 'vue'
 
 // const isNotNull = (el: FilmInfo | null): el is FilmInfo => {
 //   return Object.is(el, !null)
 // }
 
-export const useSwitchTab = (films: ShallowRef<FilmInfo[] | null>) => {
-  const currentFilm = ref<FilmInfo | null>(null)
+const routes = {
+  card: '/card',
+  list: '/'
+}
 
-  const toggleSwitchTab = (id: number | null) => {
+export interface TabProps {
+  id?: number
+  path: keyof typeof routes
+}
+
+export const useSwitchTab = (films: ShallowRef<FilmInfo[]>) => {
+  const currentFilm = ref<FilmInfo | false>(false)
+
+  const toggleSwitchTab = (props: TabProps) => {
     const listFilms = toValue(films)
-    const obj = useGetObj(id, listFilms)
-    if (obj && currentFilm) {
-      currentFilm.value = obj
-    } else {
-      currentFilm.value = null
-    }
+    const obj = props.id ? useGetObj(props.id, listFilms) : null
+    currentFilm.value = obj || false
   }
-  const currentTab = computed(() => (Object.is(currentFilm.value, null) ? true : false))
+
+  const currentTab = computed(() => (currentFilm.value ? 'card' : 'list'))
+
+  onMounted(() => {
+    window.addEventListener('popstate', listener)
+  })
+
+  onUnmounted(() => {
+    window.removeEventListener('popstate', listener)
+  })
+
+  watchEffect(() => {
+    const currentRoute = routes[currentTab.value]
+    history.pushState(null, '', currentRoute)
+  })
+
+  const listener = () => {
+    const path = window.location.pathname
+    if (path === routes.list) toggleSwitchTab({ path: 'list' })
+  }
 
   return {
     currentTab,
