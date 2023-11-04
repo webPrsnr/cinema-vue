@@ -1,10 +1,11 @@
 <script setup lang="ts">
+import type { TabProps } from '@/composable/useSwitchTab'
 import type { FilmInfo } from '@/listFilms'
 interface FilmInfoProps {
   list: FilmInfo[]
 }
 interface FilmListEmit {
-  (e: 'update', id: number): void
+  (e: 'update', { id, path }: TabProps): void
 }
 const props = defineProps<FilmInfoProps>()
 const emit = defineEmits<FilmListEmit>()
@@ -12,7 +13,7 @@ const emit = defineEmits<FilmListEmit>()
 const joinGenre = (genres: string[]) => genres.join(', ')
 
 const getId = (id: number) => {
-  emit('update', id)
+  emit('update', { path: 'card', id })
 }
 </script>
 <template>
