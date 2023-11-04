@@ -6,7 +6,7 @@ import FilmCard from './FilmCard.vue'
 import { onBeforeMount, shallowRef } from 'vue'
 import { useSwitchTab } from '@/composable/useSwitchTab'
 
-const films = shallowRef<FilmInfo[] | null>(null)
+const films = shallowRef<FilmInfo[]>([])
 
 const { currentTab, toggleSwitchTab, currentFilm } = useSwitchTab(films)
 
@@ -19,8 +19,8 @@ onBeforeMount(() => {
   <main>
     <section class="main">
       <h2>Заказ билетов</h2>
-      <FilmList v-if="currentTab && films" :list="films" @update="toggleSwitchTab" />
-      <FilmCard v-if="!currentTab && currentFilm" :card="currentFilm" />
+      <FilmList v-if="currentTab === 'list'" :list="films" @update="toggleSwitchTab" />
+      <FilmCard v-if="currentTab === 'card' && currentFilm" :card="currentFilm" />
     </section>
   </main>
 </template>
