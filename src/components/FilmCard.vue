@@ -5,6 +5,7 @@ import FilmSeans from './FilmSeans.vue'
 import { defineAsyncComponent } from 'vue'
 import AppSpinner from './ui/AppSpinner.vue'
 import { useSetSeats } from '@/composable/useSetSeats'
+import { useSetScroll } from '@/composable/useSetScroll'
 
 //TODO
 // 1. css
@@ -20,7 +21,7 @@ const FilmSeats = defineAsyncComponent({
     }),
   loadingComponent: AppSpinner
 })
-
+useSetScroll()
 const { seats, isSeatsAvailable, setSeats } = useSetSeats(props.card.dates)
 
 const chooseTimeHandler = (time: string, clickedDate: Date) => {

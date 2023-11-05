@@ -13,3 +13,7 @@ body {
     font-family: "SB Sans", sans-serif;
     font-size: 14px;
 }
+
+.off-scroll {
+    overflow: hidden;
+}
