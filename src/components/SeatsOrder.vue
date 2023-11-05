@@ -34,6 +34,7 @@ const emit = defineEmits<{
   display: flex;
   flex-direction: column;
   height: 100%;
+  min-height: 20rem;
 }
 
 .order__title {
