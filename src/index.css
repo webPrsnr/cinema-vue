@@ -1,3 +1,6 @@
+@import url("./colors.css");
+@import url("./reset.css");
+
 @font-face {
     font-family: "SB Sans";
     font-weight: 100 800;
