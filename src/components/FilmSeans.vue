@@ -28,8 +28,7 @@ const chooseSession = (time: string, date: Date) => {
 
 <style scoped>
 .session {
-  border: 1px solid;
-  border-color: rgba(120, 120, 128, 0.2);
+  border: var(--primary-border);
   border-radius: 1rem;
   margin: 0.5rem 0;
 }
@@ -58,7 +57,7 @@ const chooseSession = (time: string, date: Date) => {
 
 .time {
   padding: 0.8rem;
-  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+  box-shadow: var(--primary-shadow);
 }
 .time__title {
   line-height: 32px;

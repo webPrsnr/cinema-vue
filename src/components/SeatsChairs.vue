@@ -50,18 +50,18 @@ const clickHandler = (chair: number) => {
   padding: 1rem;
   border-radius: 0.175rem;
   cursor: pointer;
-  background-color: rgb(125, 177, 229);
+  background-color: var(--seat-free);
   box-shadow:
     rgba(0, 0, 0, 0.05) 0px 6px 24px 0px,
     rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
 }
 
 .faq__reserved {
-  background-color: rgb(255, 170, 0);
+  background-color: var(--seat-reserved-client);
 }
 
 .faq__circle_red {
-  background-color: rgba(128, 128, 128, 0.5);
+  background-color: var(--seat-reserved-other);
   cursor: not-allowed;
   pointer-events: none;
 }

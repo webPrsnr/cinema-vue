@@ -35,39 +35,52 @@ const emit = defineEmits<{
   flex-direction: column;
   height: 100%;
   min-height: 20rem;
-}
 
-.order__title {
-  text-transform: uppercase;
-}
-
-.order__wrapper {
-  background-color: white;
-  border-radius: 0.85rem;
-  padding: 0 1rem;
-  flex-grow: 1;
-  margin-top: 0.75rem;
-  height: 1rem;
-  overflow: auto;
-}
-
-.order__wrapper::-webkit-scrollbar {
-  width: 10px;
-}
-
-.order__wrapper::-webkit-scrollbar-thumb {
-  background: rgba(0, 0, 0, 0.2);
-  border-radius: 0.5rem;
-}
-
-.order__wrapper div:not(:first-child) {
-  border-top: 1px solid rgba(120, 120, 128, 0.2);
-}
-
-.order__elem {
-  display: flex;
-  padding: 0.4rem 0.2rem;
-  margin: 0.5rem 0;
+  &__title {
+    text-transform: uppercase;
+  }
+  &__wrapper {
+    background-color: var(--primary-white);
+    border-radius: 0.85rem;
+    padding: 0 1rem;
+    flex-grow: 1;
+    margin-top: 0.75rem;
+    height: 1rem;
+    overflow: auto;
+    box-shadow: var(--secondary-shadow);
+  }
+  &__wrapper::-webkit-scrollbar {
+    width: 10px;
+  }
+  &__wrapper::-webkit-scrollbar-thumb {
+    background: rgba(0, 0, 0, 0.2);
+    border-radius: 0.5rem;
+  }
+  &__wrapper div:not(:first-child) {
+    border-top: var(--primary-border);
+  }
+  &__elem {
+    display: flex;
+    padding: 0.4rem 0.2rem;
+    margin: 0.5rem 0;
+  }
+  &__buy {
+    margin-top: 0.25rem;
+    font-size: 17px;
+    height: 3rem;
+    background-color: var(--primary-btn);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    color: var(--primary-white);
+    border-radius: 0.5rem;
+    font-weight: 600;
+  }
+  &__buy:disabled {
+    background-color: var(--disabled-btn);
+    color: var(--primary-icon);
+  }
 }
 
 .elem__description {
@@ -79,28 +92,10 @@ const emit = defineEmits<{
 .elem__delete {
   cursor: pointer;
   background-color: transparent;
-  color: rgba(60, 60, 67, 0.6);
+  color: var(--primary-icon);
 }
 
 .elem__delete:hover {
-  color: rgb(239, 68, 68);
-}
-
-.order__buy {
-  margin-top: 0.25rem;
-  font-size: 17px;
-  height: 3rem;
-  background-color: blueviolet;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  color: white;
-  border-radius: 0.5rem;
-  font-weight: 600;
-}
-.order__buy:disabled {
-  background-color: rgba(120, 120, 128, 0.08);
-  color: rgba(60, 60, 67, 0.3);
+  color: var(--primary-danger);
 }
 </style>

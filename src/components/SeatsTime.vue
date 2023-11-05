@@ -13,9 +13,9 @@ defineProps<{
 
 <style scoped>
 .seats__time {
-  background-color: white;
+  background-color: var(--primary-white);
   border-radius: 1rem;
-  box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 50px;
+  box-shadow: var(--secondary-shadow);
   height: 3rem;
   width: 60%;
   margin: 0 auto;

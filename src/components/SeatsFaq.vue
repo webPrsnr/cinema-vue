@@ -15,10 +15,10 @@
   grid-template-columns: 1fr 4fr;
   align-items: center;
   gap: 0.2rem;
-  background-color: white;
+  background-color: var(--primary-white);
   padding: 0.5rem;
   border-radius: 1rem;
-  box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 50px;
+  box-shadow: var(--secondary-shadow);
 }
 
 .faq__circle {
@@ -27,10 +27,10 @@
   height: 0.75rem;
 }
 .faq__circle_blue {
-  background-color: rgb(125, 177, 229);
+  background-color: var(--seat-free);
 }
 .faq__circle_red {
-  background-color: rgba(128, 128, 128, 0.5);
+  background-color: var(--seat-reserved-other);
   cursor: not-allowed;
   pointer-events: none;
 }

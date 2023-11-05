@@ -43,7 +43,7 @@ const removeHandler = (id: number) => {
 .seats__wrapper {
   background-color: rgb(247, 248, 250);
   height: 100vh;
-  border: 1px solid rgba(120, 120, 128, 0.2);
+  border: var(--primary-border);
   border-radius: 1rem;
   position: relative;
 }
