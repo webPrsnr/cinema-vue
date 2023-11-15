@@ -21,17 +21,21 @@
   box-shadow: var(--secondary-shadow);
 }
 
-.faq__circle {
-  border-radius: 9999px;
-  width: 0.75rem;
-  height: 0.75rem;
-}
-.faq__circle_blue {
-  background-color: var(--seat-free);
-}
-.faq__circle_red {
-  background-color: var(--seat-reserved-other);
-  cursor: not-allowed;
-  pointer-events: none;
+.faq {
+  &__circle {
+    border-radius: 9999px;
+    width: 0.75rem;
+    height: 0.75rem;
+  }
+
+  &__circle_blue {
+    background-color: var(--seat-free);
+  }
+
+  &__circle_red {
+    background-color: var(--seat-reserved-other);
+    cursor: not-allowed;
+    pointer-events: none;
+  }
 }
 </style>
