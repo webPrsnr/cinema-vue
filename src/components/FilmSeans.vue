@@ -31,13 +31,15 @@ const chooseSession = (time: string, date: Date) => {
   border: var(--primary-border);
   border-radius: 1rem;
   margin: 0.5rem 0;
-}
-.session__wrapper {
-  height: 25rem;
-  overflow: auto;
-}
-.session__time {
-  padding: 0.7rem 0 0.7rem 1rem;
+
+  &__wrapper {
+    height: 25rem;
+    overflow: auto;
+  }
+
+  &__time {
+    padding: 0.7rem 0 0.7rem 1rem;
+  }
 }
 ::-webkit-scrollbar {
   width: 10px;
@@ -58,9 +60,10 @@ const chooseSession = (time: string, date: Date) => {
 .time {
   padding: 0.8rem;
   box-shadow: var(--primary-shadow);
-}
-.time__title {
-  line-height: 32px;
-  font-size: 26px;
+
+  &__title {
+    line-height: 32px;
+    font-size: 26px;
+  }
 }
 </style>
