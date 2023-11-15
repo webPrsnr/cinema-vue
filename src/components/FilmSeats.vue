@@ -40,15 +40,18 @@ const removeHandler = (id: number) => {
 </template>
 
 <style scoped>
-.seats__wrapper {
-  background-color: rgb(247, 248, 250);
-  height: 100vh;
-  border: var(--primary-border);
-  border-radius: 1rem;
-  position: relative;
-}
-.seats__title {
-  padding: 1.5rem;
+.seats {
+  &__wrapper {
+    background-color: rgb(247, 248, 250);
+    height: 100vh;
+    border: var(--primary-border);
+    border-radius: 1rem;
+    position: relative;
+  }
+
+  &__title {
+    padding: 1.5rem;
+  }
 }
 
 .chairs__wrapper {
