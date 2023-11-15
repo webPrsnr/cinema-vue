@@ -72,14 +72,24 @@ const chooseTimeHandler = (time: string, clickedDate: Date) => {
 <style scoped>
 .wrapper {
   display: grid;
+
+  &__film {
+    display: grid;
+    grid-template-columns: max-content 2fr 1fr;
+    grid-column-gap: 0.5rem;
+  }
 }
 .el {
   border: 1px solid red;
-}
-.wrapper__film {
-  display: grid;
-  grid-template-columns: max-content 2fr 1fr;
-  grid-column-gap: 0.5rem;
+
+  &__description {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__year {
+    flex-grow: 1;
+  }
 }
 .poster {
   width: 280px;
@@ -89,14 +99,7 @@ const chooseTimeHandler = (time: string, clickedDate: Date) => {
   overflow: hidden;
   background-position: center;
 }
-.el__description {
-  display: flex;
-  flex-direction: column;
-}
 .description {
-  flex-grow: 1;
-}
-.el__year {
   flex-grow: 1;
 }
 .info {
