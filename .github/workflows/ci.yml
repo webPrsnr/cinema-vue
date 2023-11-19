@@ -1,0 +1,43 @@
+name: CI
+
+permissons:
+  contents: read
+
+on: 
+  push:
+    branches:
+      - develop
+
+jobs:
+  checks:
+    name: Checks
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - name: Checkout the repo
+      uses: actions/checkout@v3
+
+      - name: Install Node.js
+      uses: actions/setup-node@v4.0.0
+
+      - name: Run install
+      uses: Borales/actions-yarn@v4.2.0
+      with:
+        cmd: install
+
+      - name: Run lint
+      uses: Borales/actions-yarn@v4.2.0
+      with:
+        cmd: lint
+
+      - name: Run stylelint
+      uses: Borales/actions-yarn@v4.2.0
+      with:
+        cmd: stylelint
+
+      - name: Run tests
+      uses: Borales/actions-yarn@v4.2.0
+      with:
+        cmd: test:unit
+
