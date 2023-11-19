@@ -6,7 +6,7 @@ interface IconBaseProps {
   iconColor?: string
 }
 
-const props = withDefaults(defineProps<IconBaseProps>(), {
+withDefaults(defineProps<IconBaseProps>(), {
   width: 18,
   height: 18,
   iconColor: 'currentColor',
