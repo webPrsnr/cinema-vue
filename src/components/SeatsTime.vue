@@ -12,16 +12,18 @@ defineProps<{
 </template>
 
 <style scoped>
-.seats__time {
-  background-color: var(--primary-white);
-  border-radius: 1rem;
-  box-shadow: var(--secondary-shadow);
-  height: 3rem;
-  width: 60%;
-  margin: 0 auto;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+.seats {
+  &__time {
+    background-color: var(--primary-white);
+    border-radius: 1rem;
+    box-shadow: var(--secondary-shadow);
+    height: 3rem;
+    width: 60%;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
 }
 </style>

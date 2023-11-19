@@ -39,25 +39,30 @@ const getId = (id: number) => {
 .poster {
   float: left;
 }
+
 .title {
   font-size: 28px;
   line-height: 34px;
   color: black;
 }
+
 .head {
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
 }
+
 .list {
   display: flex;
   flex-wrap: wrap;
 }
+
 .item {
   padding: 20px;
   flex: 0 0 50%;
   cursor: pointer;
 }
+
 .movie {
   height: 354px;
   width: 240px;

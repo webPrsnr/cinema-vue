@@ -22,12 +22,15 @@ const vScroll = {
 </template>
 
 <style scoped>
-.spinner__loading {
-  height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+.spinner {
+  &__loading {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
 }
+
 .lds-roller {
   display: inline-block;
   position: relative;
@@ -38,21 +41,21 @@ const vScroll = {
     animation: lds-roller 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
     transform-origin: 40px 40px;
 
-    &:after {
+    &::after {
       content: ' ';
       display: block;
       position: absolute;
       width: 7px;
       height: 7px;
       border-radius: 50%;
-      background: rgb(125, 177, 229);
+      background: rgb(125 177 229);
       margin: -4px 0 0 -4px;
     }
 
     &:nth-child(1) {
       animation-delay: -0.036s;
 
-      &:after {
+      &::after {
         top: 63px;
         left: 63px;
       }
@@ -61,7 +64,7 @@ const vScroll = {
     &:nth-child(2) {
       animation-delay: -0.072s;
 
-      &:after {
+      &::after {
         top: 68px;
         left: 56px;
       }
@@ -70,7 +73,7 @@ const vScroll = {
     &:nth-child(3) {
       animation-delay: -0.108s;
 
-      &:after {
+      &::after {
         top: 71px;
         left: 48px;
       }
@@ -79,7 +82,7 @@ const vScroll = {
     &:nth-child(4) {
       animation-delay: -0.144s;
 
-      &:after {
+      &::after {
         top: 72px;
         left: 40px;
       }
@@ -88,7 +91,7 @@ const vScroll = {
     &:nth-child(5) {
       animation-delay: -0.18s;
 
-      &:after {
+      &::after {
         top: 71px;
         left: 32px;
       }
@@ -97,7 +100,7 @@ const vScroll = {
     &:nth-child(6) {
       animation-delay: -0.216s;
 
-      &:after {
+      &::after {
         top: 68px;
         left: 24px;
       }
@@ -106,7 +109,7 @@ const vScroll = {
     &:nth-child(7) {
       animation-delay: -0.252s;
 
-      &:after {
+      &::after {
         top: 63px;
         left: 17px;
       }
@@ -115,17 +118,19 @@ const vScroll = {
     &:nth-child(8) {
       animation-delay: -0.288s;
 
-      &:after {
+      &::after {
         top: 56px;
         left: 12px;
       }
     }
   }
 }
+
 @keyframes lds-roller {
   0% {
     transform: rotate(0deg);
   }
+
   100% {
     transform: rotate(360deg);
   }

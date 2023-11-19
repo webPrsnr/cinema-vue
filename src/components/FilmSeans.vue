@@ -41,14 +41,16 @@ const chooseSession = (time: string, date: Date) => {
     padding: 0.7rem 0 0.7rem 1rem;
   }
 }
+
 ::-webkit-scrollbar {
   width: 10px;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: rgba(0, 0, 0, 0.2);
+  background: rgba(0 0 0 / 20%);
   border-radius: 0.5rem;
 }
+
 .times {
   display: flex;
   flex-wrap: wrap;

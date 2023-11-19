@@ -7,18 +7,20 @@
   </section>
 </template>
 <style scoped>
-.seats__faq {
-  position: absolute;
-  left: 1rem;
-  bottom: 1rem;
-  display: grid;
-  grid-template-columns: 1fr 4fr;
-  align-items: center;
-  gap: 0.2rem;
-  background-color: var(--primary-white);
-  padding: 0.5rem;
-  border-radius: 1rem;
-  box-shadow: var(--secondary-shadow);
+.seats {
+  &__faq {
+    position: absolute;
+    left: 1rem;
+    bottom: 1rem;
+    display: grid;
+    grid-template-columns: 1fr 4fr;
+    align-items: center;
+    gap: 0.2rem;
+    background-color: var(--primary-white);
+    padding: 0.5rem;
+    border-radius: 1rem;
+    box-shadow: var(--secondary-shadow);
+  }
 }
 
 .faq {

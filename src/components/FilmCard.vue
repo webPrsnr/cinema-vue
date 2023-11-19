@@ -79,6 +79,7 @@ const chooseTimeHandler = (time: string, clickedDate: Date) => {
     grid-column-gap: 0.5rem;
   }
 }
+
 .el {
   border: 1px solid red;
 
@@ -91,6 +92,7 @@ const chooseTimeHandler = (time: string, clickedDate: Date) => {
     flex-grow: 1;
   }
 }
+
 .poster {
   width: 280px;
   height: 420px;
@@ -99,15 +101,18 @@ const chooseTimeHandler = (time: string, clickedDate: Date) => {
   overflow: hidden;
   background-position: center;
 }
+
 .description {
   flex-grow: 1;
 }
+
 .info {
   display: grid;
   grid-template-columns: max-content 1fr;
   grid-column-gap: 10px;
-  grid-row-gap: 5px;
+  row-gap: 5px;
 }
+
 .seats {
   padding: 1.7rem 1rem;
 }

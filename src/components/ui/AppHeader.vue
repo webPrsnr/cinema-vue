@@ -48,12 +48,14 @@ onUnmounted(() => {
   justify-content: space-between;
   align-items: center;
 }
+
 .container {
   max-width: 1200px;
   margin: 0 auto;
   width: 100%;
   padding: 0 20px;
 }
+
 .header {
   padding: 10px 16px;
   background: #555;

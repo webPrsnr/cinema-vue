@@ -39,6 +39,7 @@ const emit = defineEmits<{
   &__title {
     text-transform: uppercase;
   }
+
   &__wrapper {
     background-color: var(--primary-white);
     border-radius: 0.85rem;
@@ -49,21 +50,26 @@ const emit = defineEmits<{
     overflow: auto;
     box-shadow: var(--secondary-shadow);
   }
+
   &__wrapper::-webkit-scrollbar {
     width: 10px;
   }
+
   &__wrapper::-webkit-scrollbar-thumb {
-    background: rgba(0, 0, 0, 0.2);
+    background: rgba(0 0 0 / 20%);
     border-radius: 0.5rem;
   }
+
   &__wrapper div:not(:first-child) {
     border-top: var(--primary-border);
   }
+
   &__elem {
     display: flex;
     padding: 0.4rem 0.2rem;
     margin: 0.5rem 0;
   }
+
   &__buy {
     margin-top: 0.25rem;
     font-size: 17px;
@@ -77,25 +83,28 @@ const emit = defineEmits<{
     border-radius: 0.5rem;
     font-weight: 600;
   }
+
   &__buy:disabled {
     background-color: var(--disabled-btn);
     color: var(--primary-icon);
   }
 }
 
-.elem__description {
-  flex: 1;
-  color: #000;
-  font-size: 17px;
-}
+.elem {
+  &__description {
+    flex: 1;
+    color: #000;
+    font-size: 17px;
+  }
 
-.elem__delete {
-  cursor: pointer;
-  background-color: transparent;
-  color: var(--primary-icon);
-}
+  &__delete {
+    cursor: pointer;
+    background-color: transparent;
+    color: var(--primary-icon);
 
-.elem__delete:hover {
-  color: var(--primary-danger);
+    &:hover {
+      color: var(--primary-danger);
+    }
+  }
 }
 </style>

@@ -42,7 +42,7 @@ const removeHandler = (id: number) => {
 <style scoped>
 .seats {
   &__wrapper {
-    background-color: rgb(247, 248, 250);
+    background-color: rgb(247 248 250);
     height: 100vh;
     border: var(--primary-border);
     border-radius: 1rem;
@@ -54,11 +54,13 @@ const removeHandler = (id: number) => {
   }
 }
 
-.chairs__wrapper {
-  display: grid;
-  grid-template-columns: 3fr 1fr;
-  justify-content: center;
-  align-items: center;
-  margin-top: 5rem;
+.chairs {
+  &__wrapper {
+    display: grid;
+    grid-template-columns: 3fr 1fr;
+    justify-content: center;
+    align-items: center;
+    margin-top: 5rem;
+  }
 }
 </style>

@@ -1,3 +1,4 @@
+/* stylelint-disable selector-class-pattern */
 .with-tooltip {
     position: relative;
 }
@@ -7,10 +8,9 @@
     opacity: 0;
     position: absolute;
     transition: opacity 0.5s;
-    color: #ffffff;
+    color: #fff;
     text-align: center;
     padding: 5px;
-    border-radius: 2px;
     min-width: 60px;
     background: #5e5d5d;
     pointer-events: none;
@@ -24,7 +24,7 @@
     content: "";
     border-width: 5px;
     border-style: solid;
-    border-color: #5e5d5d transparent transparent transparent;
+    border-color: #5e5d5d transparent transparent;
     position: absolute;
     z-index: 1;
     pointer-events: none;
@@ -46,5 +46,5 @@
 .tooltip--top::after {
     inset-block-start: -20%;
     inset-inline-start: 40%;
-    border-color: #5e5d5d transparent transparent transparent;
+    border-color: #5e5d5d transparent transparent;
 }
