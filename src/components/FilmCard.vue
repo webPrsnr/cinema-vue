@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import type { FilmInfo } from '@/listFilms'
-import { converToHour } from '@/utils/convertToHour'
 import FilmSeans from './FilmSeans.vue'
 import { defineAsyncComponent } from 'vue'
 import AppSpinner from './ui/AppSpinner.vue'
