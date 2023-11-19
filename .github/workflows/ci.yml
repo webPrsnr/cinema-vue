@@ -1,6 +1,6 @@
 name: CI
 
-permissons:
+permissions:
   contents: read
 
 on:
