@@ -4,6 +4,8 @@
     <h4>свободно</h4>
     <div class="faq__circle faq__circle_red"></div>
     <h4>занято</h4>
+    <div class="faq__circle faq__circle_orange"></div>
+    <h4>ваши места</h4>
   </section>
 </template>
 <style scoped>
@@ -38,6 +40,10 @@
     background-color: var(--seat-reserved-other);
     cursor: not-allowed;
     pointer-events: none;
+  }
+
+  &__circle_orange {
+    background-color: var(--seat-reserved-client);
   }
 }
 </style>
