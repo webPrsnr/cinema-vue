@@ -51,6 +51,7 @@ const emit = defineEmits<{
     height: 1rem;
     overflow: auto;
     box-shadow: var(--secondary-shadow);
+    overflow: scroll;
   }
 
   &__wrapper::-webkit-scrollbar {
