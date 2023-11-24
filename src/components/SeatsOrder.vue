@@ -18,7 +18,9 @@ const emit = defineEmits<{
       <div class="order__elem" v-for="seat in props.seats" :key="seat">
         <div class="elem__description">{{ seat }} место</div>
         <button type="button" class="elem__delete" @click="emit('removeOrder', seat)">
-          <IconBase :icon-name="'delete'"><IconDelete /></IconBase>
+          <IconBase :icon-name="'delete'">
+            <IconDelete />
+          </IconBase>
         </button>
       </div>
     </div>
@@ -93,13 +95,10 @@ const emit = defineEmits<{
 .elem {
   &__description {
     flex: 1;
-    color: #000;
     font-size: 17px;
   }
 
   &__delete {
-    cursor: pointer;
-    background-color: transparent;
     color: var(--primary-icon);
 
     &:hover {
