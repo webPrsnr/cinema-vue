@@ -1,12 +1,14 @@
 <script setup lang="ts">
 import { onMounted, ref } from 'vue'
 import AppSpinner from './AppSpinner.vue'
+import { useToggle } from '@/composable/useToggle'
 
-const flag = ref(false)
+const { currentState, toggle } = useToggle()
+
 const hola = ref<HTMLElement>()
 onMounted(() => {
   setTimeout(() => {
-    flag.value = true
+    toggle()
   }, 2000)
   hola.value?.scrollIntoView({ behavior: 'smooth' })
 })
@@ -14,7 +16,7 @@ onMounted(() => {
 
 <template>
   <div class="seats" ref="hola">
-    <AppSpinner v-if="!flag" />
+    <AppSpinner v-if="!currentState()" />
     <slot v-else />
   </div>
 </template>

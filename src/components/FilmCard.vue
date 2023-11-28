@@ -5,6 +5,7 @@ import { defineAsyncComponent, ref } from 'vue'
 import { useSetSeats } from '@/composable/useSetSeats'
 import { useSetScroll } from '@/composable/useSetScroll'
 import SpinnerWrapper from './ui/SpinnerWrapper.vue'
+import { useToggle } from '@/composable/useToggle'
 
 //TODO
 // 1. css
@@ -13,7 +14,7 @@ const props = defineProps<{
   card: FilmInfo
 }>()
 
-const isSeatsAvailable = ref(false)
+const { currentState, toggle } = useToggle()
 
 const FilmSeats = defineAsyncComponent({
   loader: () =>
@@ -26,7 +27,7 @@ useSetScroll()
 const { seats, setSeats } = useSetSeats(props.card.dates)
 
 const chooseTimeHandler = (time: string, clickedDate: Date) => {
-  isSeatsAvailable.value = true
+  toggle()
   seats.value = { time, clickedDate }
 }
 
@@ -37,7 +38,7 @@ const moveBackHandler = () => {
     behavior: 'smooth'
   })
   setTimeout(() => {
-    isSeatsAvailable.value = false
+    toggle()
   }, 600)
 }
 </script>
@@ -76,7 +77,7 @@ const moveBackHandler = () => {
         </section>
         <FilmSeans @choose-time="chooseTimeHandler" :dates="props.card.dates" />
       </div>
-      <SpinnerWrapper v-if="isSeatsAvailable">
+      <SpinnerWrapper v-if="currentState()">
         <FilmSeats
           v-if="seats"
           :seats="setSeats"
