@@ -4,10 +4,8 @@ import ArrowUp from '@/assets/icons/arrow-up.svg'
 
 <template>
   <section class="seats-back__wrapper">
-    <div>
-      <span class="seats-back__btn">Назад</span>
-      <ArrowUp class="seats-back__arrow" />
-    </div>
+    <span class="seats-back__btn">Назад</span>
+    <ArrowUp class="seats-back__arrow" />
   </section>
 </template>
 
