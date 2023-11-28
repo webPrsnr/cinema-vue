@@ -19,7 +19,7 @@ defineProps<{
     box-shadow: var(--secondary-shadow);
     height: 3rem;
     width: 60%;
-    margin: 0 auto;
+    margin: 3rem auto 0;
     display: flex;
     flex-direction: column;
     justify-content: center;
