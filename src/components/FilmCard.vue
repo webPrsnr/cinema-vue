@@ -1,10 +1,10 @@
 <script setup lang="ts">
 import type { FilmInfo } from '@/listFilms'
 import FilmSeans from './FilmSeans.vue'
-import { defineAsyncComponent } from 'vue'
-import AppSpinner from './ui/AppSpinner.vue'
+import { defineAsyncComponent, ref } from 'vue'
 import { useSetSeats } from '@/composable/useSetSeats'
 import { useSetScroll } from '@/composable/useSetScroll'
+import SpinnerWrapper from './ui/SpinnerWrapper.vue'
 
 //TODO
 // 1. css
@@ -13,18 +13,32 @@ const props = defineProps<{
   card: FilmInfo
 }>()
 
+const isSeatsAvailable = ref(false)
+
 const FilmSeats = defineAsyncComponent({
   loader: () =>
     new Promise<any>((res) => {
-      setTimeout(() => res(import('./FilmSeats.vue')), 2000)
-    }),
-  loadingComponent: AppSpinner
+      setTimeout(() => res(import('./FilmSeats.vue')), 0)
+    })
 })
+
 useSetScroll()
-const { seats, isSeatsAvailable, setSeats } = useSetSeats(props.card.dates)
+const { seats, setSeats } = useSetSeats(props.card.dates)
 
 const chooseTimeHandler = (time: string, clickedDate: Date) => {
+  isSeatsAvailable.value = true
   seats.value = { time, clickedDate }
+}
+
+const moveBackHandler = () => {
+  // TODO исправить хэдер при скролле
+  window.scrollTo({
+    top: 0,
+    behavior: 'smooth'
+  })
+  setTimeout(() => {
+    isSeatsAvailable.value = false
+  }, 600)
 }
 </script>
 <template>
@@ -62,9 +76,14 @@ const chooseTimeHandler = (time: string, clickedDate: Date) => {
         </section>
         <FilmSeans @choose-time="chooseTimeHandler" :dates="props.card.dates" />
       </div>
-      <div v-show="isSeatsAvailable" class="seats">
-        <FilmSeats v-if="seats" :seats="setSeats" :date="seats.clickedDate" />
-      </div>
+      <SpinnerWrapper v-if="isSeatsAvailable">
+        <FilmSeats
+          v-if="seats"
+          :seats="setSeats"
+          :date="seats.clickedDate"
+          @moveBackHandler="moveBackHandler"
+        />
+      </SpinnerWrapper>
     </div>
   </section>
 </template>
@@ -110,9 +129,5 @@ const chooseTimeHandler = (time: string, clickedDate: Date) => {
   grid-template-columns: max-content 1fr;
   grid-column-gap: 10px;
   row-gap: 5px;
-}
-
-.seats {
-  padding: 1.7rem 1rem;
 }
 </style>

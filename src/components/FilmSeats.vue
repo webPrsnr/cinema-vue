@@ -4,10 +4,15 @@ import SeatsOrder from './SeatsOrder.vue'
 import SeatsChairs from './SeatsChairs.vue'
 import SeatsFaq from './SeatsFaq.vue'
 import SeatsTime from './SeatsTime.vue'
+import SeatsBackBtn from './SeatsBackBtn.vue'
 import { ref } from 'vue'
 const props = defineProps<{
   seats: FilmSession
   date: Date
+}>()
+
+const emit = defineEmits<{
+  (e: 'moveBackHandler'): void
 }>()
 
 const reserveSeats = ref<number[]>([])
@@ -20,11 +25,15 @@ const removeHandler = (id: number) => {
   const index = reserveSeats.value.indexOf(id)
   reserveSeats.value.splice(index, 1)
 }
+
+const moveBackHandler = () => {
+  emit('moveBackHandler')
+}
 </script>
 <template>
   <section class="seats__wrapper">
-    <h2 class="seats__title">Доступные места</h2>
     <SeatsTime :time="props.seats.time" :date="props.date" />
+    <SeatsBackBtn @click="moveBackHandler" />
     <div class="chairs__wrapper">
       <SeatsChairs
         :chairs="props.seats.totalSeats"
@@ -50,7 +59,7 @@ const removeHandler = (id: number) => {
   }
 
   &__title {
-    padding: 1.5rem;
+    padding: 2.5rem;
   }
 }
 

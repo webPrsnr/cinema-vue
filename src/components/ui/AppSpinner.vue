@@ -1,13 +1,5 @@
-<script setup lang="ts">
-const vScroll = {
-  mounted: (el: HTMLElement) => {
-    el.scrollIntoView({ behavior: 'smooth' })
-  }
-}
-</script>
-
 <template>
-  <div v-scroll class="spinner__loading">
+  <div class="spinner__loading">
     <div class="lds-roller">
       <div></div>
       <div></div>
