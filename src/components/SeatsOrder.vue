@@ -1,6 +1,5 @@
 <script setup lang="ts">
-import IconBase from '@/utils/IconBase.vue'
-import IconDelete from './ui/IconDelete.vue'
+import IconDelete from '@/assets/icons/delete.svg'
 
 const props = defineProps<{ seats: number[] }>()
 
@@ -18,9 +17,7 @@ const emit = defineEmits<{
       <div class="order__elem" v-for="seat in props.seats" :key="seat">
         <div class="elem__description">{{ seat }} место</div>
         <button type="button" class="elem__delete" @click="emit('removeOrder', seat)">
-          <IconBase :icon-name="'delete'">
-            <IconDelete />
-          </IconBase>
+          <IconDelete class="elem__icon-delete" />
         </button>
       </div>
     </div>
@@ -100,11 +97,17 @@ const emit = defineEmits<{
   }
 
   &__delete {
-    color: var(--primary-icon);
+    fill: var(--primary-icon);
 
     &:hover {
-      color: var(--primary-danger);
+      fill: var(--primary-danger);
     }
+  }
+
+  &__icon-delete {
+    fill: inherit;
+    width: 18px;
+    height: 18px;
   }
 }
 </style>
