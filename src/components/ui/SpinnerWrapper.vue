@@ -5,17 +5,17 @@ import { useToggle } from '@/composable/useToggle'
 
 const { currentState, toggle } = useToggle()
 
-const hola = ref<HTMLElement>()
+const element = ref<HTMLElement>()
 onMounted(() => {
   setTimeout(() => {
     toggle()
   }, 2000)
-  hola.value?.scrollIntoView({ behavior: 'smooth' })
+  element.value?.scrollIntoView({ behavior: 'smooth' })
 })
 </script>
 
 <template>
-  <div class="seats" ref="hola">
+  <div class="seats" ref="element">
     <AppSpinner v-if="!currentState()" />
     <slot v-else />
   </div>
