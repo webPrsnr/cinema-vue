@@ -5,11 +5,22 @@ import SeatsChairs from './SeatsChairs.vue'
 import SeatsFaq from './SeatsFaq.vue'
 import SeatsTime from './SeatsTime.vue'
 import SeatsBackBtn from './SeatsBackBtn.vue'
-import { ref } from 'vue'
+import { inject, isReactive, ref } from 'vue'
+import { useGetLC } from '@/composable/useLocalStorage'
+
+const id = inject('id') as number
+
 const props = defineProps<{
   seats: FilmSession
   date: Date
 }>()
+
+// const res =
+//   useGetLC(id, props.seats.time, props.date.getTime())?.concat(props.seats.reserved) ||
+//   props.seats.reserved
+
+let res = useGetLC(id, props.seats.time, props.date.getTime()) || props.seats.reserved
+!isReactive(res) && (res = res.concat(props.seats.reserved))
 
 const emit = defineEmits<{
   (e: 'moveBackHandler'): void
@@ -37,12 +48,17 @@ const moveBackHandler = () => {
     <div class="chairs__wrapper">
       <SeatsChairs
         :chairs="props.seats.totalSeats"
-        :reservedGuest="props.seats.reserved"
+        :reservedGuest="res"
         :reservedClient="reserveSeats"
         @click-handler="clickHandler"
         @remove-handler="removeHandler"
       />
-      <SeatsOrder :seats="reserveSeats" @remove-order="removeHandler" />
+      <SeatsOrder
+        :seats="reserveSeats"
+        @remove-order="removeHandler"
+        :date="date"
+        :time="seats.time"
+      />
     </div>
     <SeatsFaq />
   </section>

@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import type { FilmInfo } from '@/listFilms'
 import FilmSeans from './FilmSeans.vue'
-import { defineAsyncComponent, ref } from 'vue'
+import { defineAsyncComponent, provide, ref } from 'vue'
 import { useSetSeats } from '@/composable/useSetSeats'
 import { useSetScroll } from '@/composable/useSetScroll'
 import SpinnerWrapper from './ui/SpinnerWrapper.vue'
@@ -13,6 +13,8 @@ import { useToggle } from '@/composable/useToggle'
 const props = defineProps<{
   card: FilmInfo
 }>()
+
+provide('id', props.card.id)
 
 const { currentState, toggle } = useToggle()
 
@@ -82,6 +84,7 @@ const moveBackHandler = () => {
           v-if="seats"
           :seats="setSeats"
           :date="seats.clickedDate"
+          :id="card.id"
           @moveBackHandler="moveBackHandler"
         />
       </SpinnerWrapper>

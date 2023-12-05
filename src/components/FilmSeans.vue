@@ -16,10 +16,12 @@ const chooseSession = (time: string, date: Date) => {
   <section class="session__wrapper">
     <h1>Все сеансы</h1>
     <section class="session" v-for="(date, index) in props.dates" :key="index">
-      <h2 class="session__time">{{ date.date.toLocaleDateString() }}</h2>
+      <h2 class="session__time">{{ new Date(date.date).toLocaleDateString() }}</h2>
       <div class="times">
         <section class="time" v-for="sess in date.session" :key="sess.time">
-          <h3 class="time__title" @click="chooseSession(sess.time, date.date)">{{ sess.time }}</h3>
+          <h3 class="time__title" @click="chooseSession(sess.time, new Date(date.date))">
+            {{ sess.time }}
+          </h3>
         </section>
       </div>
     </section>

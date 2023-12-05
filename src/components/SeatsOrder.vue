@@ -1,11 +1,19 @@
 <script setup lang="ts">
 import IconDelete from '@/assets/icons/delete.svg'
+import { useSetLC } from '@/composable/useLocalStorage'
+import { inject, toValue } from 'vue'
 
-const props = defineProps<{ seats: number[] }>()
+const props = defineProps<{ seats: number[]; date: Date; time: string }>()
+
+const id = inject('id') as number
 
 const emit = defineEmits<{
   (e: 'removeOrder', seat: number): void
 }>()
+
+const clickHandler = () => {
+  useSetLC(id, props.date.getTime(), props.time, toValue(props.seats))
+}
 </script>
 <template>
   <section class="order">
@@ -21,9 +29,7 @@ const emit = defineEmits<{
         </button>
       </div>
     </div>
-    <button class="order__buy" :disabled="!props.seats.length" @click="console.log(123)">
-      Далее
-    </button>
+    <button class="order__buy" :disabled="!props.seats.length" @click="clickHandler">Далее</button>
   </section>
 </template>
 
