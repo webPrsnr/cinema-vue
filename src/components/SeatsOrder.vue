@@ -5,7 +5,7 @@ import { inject, toValue } from 'vue'
 import AppHeading from './ui/AppHeading.vue'
 import HeadIcon from '@/assets/icons/seat.svg'
 
-const props = defineProps<{ seats: number[]; date: Date; time: string }>()
+const props = defineProps<{ seats: number[]; date: number; time: string }>()
 
 const id = inject('id') as number
 
@@ -14,7 +14,7 @@ const emit = defineEmits<{
 }>()
 
 const clickHandler = () => {
-  useSetLC(id, props.date.getTime(), props.time, toValue(props.seats))
+  useSetLC(id, props.date, props.time, toValue(props.seats))
 }
 </script>
 <template>

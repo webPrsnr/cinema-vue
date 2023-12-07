@@ -12,14 +12,14 @@ const id = inject('id') as number
 
 const props = defineProps<{
   seats: FilmSession
-  date: Date
+  date: number
 }>()
 
 // const res =
 //   useGetLC(id, props.seats.time, props.date.getTime())?.concat(props.seats.reserved) ||
 //   props.seats.reserved
 
-let res = useGetLC(id, props.seats.time, props.date.getTime()) || props.seats.reserved
+let res = useGetLC(id, props.seats.time, props.date) || props.seats.reserved
 !isReactive(res) && (res = res.concat(props.seats.reserved))
 
 const emit = defineEmits<{

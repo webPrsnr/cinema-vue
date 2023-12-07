@@ -7,10 +7,10 @@ const props = defineProps<{
   dates: RentalDate[]
 }>()
 const emit = defineEmits<{
-  (e: 'chooseTime', time: string, date: Date): void
+  (e: 'chooseTime', time: string, date: number): void
 }>()
 
-const chooseSession = (time: string, date: Date) => {
+const chooseSession = (time: string, date: number) => {
   emit('chooseTime', time, date)
 }
 </script>
@@ -24,7 +24,10 @@ const chooseSession = (time: string, date: Date) => {
         <h2 class="session__time">{{ new Date(date.date).toLocaleDateString() }}</h2>
         <div class="times">
           <section class="time" v-for="sess in date.session" :key="sess.time">
-            <h3 class="time__title" @click="chooseSession(sess.time, new Date(date.date))">
+            <h3
+              class="time__title"
+              @click="chooseSession(sess.time, new Date(date.date).getTime())"
+            >
               {{ sess.time }}
             </h3>
           </section>

@@ -1,13 +1,13 @@
 <script setup lang="ts">
 defineProps<{
   time: string
-  date: Date
+  date: number
 }>()
 </script>
 <template>
   <section class="seats__time">
     <h3>{{ time }}</h3>
-    <div>{{ date.toLocaleDateString() }}</div>
+    <div>{{ new Date(date).toLocaleDateString() }}</div>
   </section>
 </template>
 

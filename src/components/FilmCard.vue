@@ -30,7 +30,7 @@ const FilmSeats = defineAsyncComponent({
 useSetScroll()
 const { seats, setSeats } = useSetSeats(props.card.dates)
 
-const chooseTimeHandler = (time: string, clickedDate: Date) => {
+const chooseTimeHandler = (time: string, clickedDate: number) => {
   toggle()
   seats.value = { time, clickedDate }
 }
