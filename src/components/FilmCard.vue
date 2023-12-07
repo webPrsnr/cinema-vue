@@ -1,11 +1,13 @@
 <script setup lang="ts">
 import type { FilmInfo } from '@/listFilms'
 import FilmSeans from './FilmSeans.vue'
-import { defineAsyncComponent, provide, ref } from 'vue'
+import { defineAsyncComponent, provide } from 'vue'
 import { useSetSeats } from '@/composable/useSetSeats'
 import { useSetScroll } from '@/composable/useSetScroll'
 import SpinnerWrapper from './ui/SpinnerWrapper.vue'
 import { useToggle } from '@/composable/useToggle'
+import AppHeading from './ui/AppHeading.vue'
+import FAQ from '@/assets/icons/ask.svg'
 
 //TODO
 // 1. css
@@ -46,7 +48,9 @@ const moveBackHandler = () => {
 </script>
 <template>
   <section>
-    <h1>Подробнее о фильме</h1>
+    <AppHeading title="Подробнее о фильме">
+      <FAQ class="head-icon" />
+    </AppHeading>
     <div class="wrapper">
       <div class="wrapper__film">
         <section class="el">
@@ -92,6 +96,12 @@ const moveBackHandler = () => {
   </section>
 </template>
 <style scoped>
+.head-icon {
+  width: 25px;
+  height: 25px;
+  fill: var(--primary-white);
+}
+
 .wrapper {
   display: grid;
 

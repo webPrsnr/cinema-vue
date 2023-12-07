@@ -1,5 +1,7 @@
 <script setup lang="ts">
 import type { RentalDate } from '@/listFilms'
+import AppHeading from './ui/AppHeading.vue'
+import Time from '@/assets/icons/time.svg'
 
 const props = defineProps<{
   dates: RentalDate[]
@@ -14,17 +16,21 @@ const chooseSession = (time: string, date: Date) => {
 </script>
 <template>
   <section class="session__wrapper">
-    <h1>Все сеансы</h1>
-    <section class="session" v-for="(date, index) in props.dates" :key="index">
-      <h2 class="session__time">{{ new Date(date.date).toLocaleDateString() }}</h2>
-      <div class="times">
-        <section class="time" v-for="sess in date.session" :key="sess.time">
-          <h3 class="time__title" @click="chooseSession(sess.time, new Date(date.date))">
-            {{ sess.time }}
-          </h3>
-        </section>
-      </div>
-    </section>
+    <AppHeading title="Все сеансы">
+      <Time class="head-icon" />
+    </AppHeading>
+    <div class="scroll">
+      <section class="session" v-for="(date, index) in props.dates" :key="index">
+        <h2 class="session__time">{{ new Date(date.date).toLocaleDateString() }}</h2>
+        <div class="times">
+          <section class="time" v-for="sess in date.session" :key="sess.time">
+            <h3 class="time__title" @click="chooseSession(sess.time, new Date(date.date))">
+              {{ sess.time }}
+            </h3>
+          </section>
+        </div>
+      </section>
+    </div>
   </section>
 </template>
 
@@ -34,14 +40,24 @@ const chooseSession = (time: string, date: Date) => {
   border-radius: 1rem;
   margin: 0.5rem 0;
 
-  &__wrapper {
-    height: 25rem;
-    overflow: auto;
+  &:first-child {
+    margin-top: 0;
   }
 
   &__time {
     padding: 0.7rem 0 0.7rem 1rem;
   }
+}
+
+.scroll {
+  height: 24rem;
+  overflow: auto;
+}
+
+.head-icon {
+  width: 25px;
+  height: 25px;
+  fill: var(--primary-white);
 }
 
 ::-webkit-scrollbar {

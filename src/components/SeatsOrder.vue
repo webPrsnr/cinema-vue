@@ -2,6 +2,8 @@
 import IconDelete from '@/assets/icons/delete.svg'
 import { useSetLC } from '@/composable/useLocalStorage'
 import { inject, toValue } from 'vue'
+import AppHeading from './ui/AppHeading.vue'
+import HeadIcon from '@/assets/icons/seat.svg'
 
 const props = defineProps<{ seats: number[]; date: Date; time: string }>()
 
@@ -16,21 +18,27 @@ const clickHandler = () => {
 }
 </script>
 <template>
-  <section class="order">
-    <h4 class="order__title">Выбранные места</h4>
-    <div class="order__wrapper">
-      <div class="order__elem" v-if="!props.seats.length">
-        <div class="elem__description">Выберите желаемое место</div>
+  <div>
+    <AppHeading title="Выбранные места">
+      <HeadIcon class="head-icon" />
+    </AppHeading>
+    <section class="order">
+      <div class="order__wrapper">
+        <div class="order__elem" v-if="!props.seats.length">
+          <div class="elem__description">Выберите желаемое место</div>
+        </div>
+        <div class="order__elem" v-for="seat in props.seats" :key="seat">
+          <div class="elem__description">{{ seat }} место</div>
+          <button type="button" class="elem__delete" @click="emit('removeOrder', seat)">
+            <IconDelete class="elem__icon-delete" />
+          </button>
+        </div>
       </div>
-      <div class="order__elem" v-for="seat in props.seats" :key="seat">
-        <div class="elem__description">{{ seat }} место</div>
-        <button type="button" class="elem__delete" @click="emit('removeOrder', seat)">
-          <IconDelete class="elem__icon-delete" />
-        </button>
-      </div>
-    </div>
-    <button class="order__buy" :disabled="!props.seats.length" @click="clickHandler">Далее</button>
-  </section>
+      <button class="order__buy" :disabled="!props.seats.length" @click="clickHandler">
+        Далее
+      </button>
+    </section>
+  </div>
 </template>
 
 <style>
@@ -50,7 +58,6 @@ const clickHandler = () => {
     border-radius: 0.85rem;
     padding: 0 1rem;
     flex-grow: 1;
-    margin-top: 0.75rem;
     height: 1rem;
     overflow: auto;
     box-shadow: var(--secondary-shadow);
@@ -94,6 +101,12 @@ const clickHandler = () => {
     background-color: var(--disabled-btn);
     color: var(--primary-icon);
   }
+}
+
+.head-icon {
+  width: 25px;
+  height: 25px;
+  fill: var(--primary-white);
 }
 
 .elem {
