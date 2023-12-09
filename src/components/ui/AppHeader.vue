@@ -1,41 +1,38 @@
 <script setup lang="ts">
 import { onMounted, onUnmounted, ref } from 'vue'
-const refHeader = ref<HTMLHeadingElement | null>(null)
 
-const handleScrollUsage = (event: Event, sticky: number, value: HTMLHeadingElement) => {
-  if (window.scrollY > sticky) {
-    value.classList.add('sticky')
+// хук useScroll который принимает функцию обработчик скролла
+// инициализируется тут (template ref)
+// хук возвращает функцию, в которую вписываем наш коллбек (функцию с  if условием)
+
+const isTopPage = ref(false)
+const headerElement = ref<HTMLElement>()
+
+const handleScroll = () => {
+  const height = headerElement.value?.clientHeight
+  if (height && window.scrollY >= height) {
+    isTopPage.value = true
   } else {
-    value.classList.remove('sticky')
+    isTopPage.value = false
   }
 }
 
 onMounted(() => {
-  const value = refHeader.value
-  if (value) {
-    const sticky = value.offsetTop
-
-    document.addEventListener('scroll', (event) => handleScrollUsage(event, sticky, value))
-  }
+  window.addEventListener('scroll', handleScroll)
 })
 
 onUnmounted(() => {
-  const value = refHeader.value
-  if (value) {
-    const sticky = value.offsetTop
-
-    document.removeEventListener('scroll', (event) => handleScrollUsage(event, sticky, value))
-  }
+  document.removeEventListener('scroll', handleScroll)
 })
 </script>
 <template>
-  <header ref="refHeader" class="header">
+  <header ref="headerElement" class="header" :class="{ scroll: isTopPage }">
     <div class="container">
       <div class="wrapper">
-        <h2>My Header</h2>
-        <div>
-          <a href="">FAQ</a>
-          <a href="">Архив</a>
+        <h2 class="wrapper__title" :class="{ 'wrapper__title-scroll': isTopPage }">в-синема</h2>
+        <div class="wrapper__links">
+          <a class="wrapper__link" href="">FAQ</a>
+          <a class="wrapper__link" href="">Архив</a>
         </div>
       </div>
     </div>
@@ -47,6 +44,36 @@ onUnmounted(() => {
   display: flex;
   justify-content: space-between;
   align-items: center;
+
+  &__title {
+    text-transform: uppercase;
+    font-size: 1.25rem;
+    letter-spacing: 0.15rem;
+    color: var(--primary-white);
+
+    &-scroll {
+      background: linear-gradient(to right, var(--secondary-icon) 0%, var(--thirdy-icon) 100%);
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+  }
+
+  &__links {
+    color: var(--font-color);
+    font-size: 0.95rem;
+    display: flex;
+  }
+
+  &__link {
+    display: block;
+    line-height: 1;
+    padding: 8px 12px;
+
+    &:hover {
+      background-color: #eee;
+      border-radius: 4px;
+    }
+  }
 }
 
 .container {
@@ -58,14 +85,14 @@ onUnmounted(() => {
 
 .header {
   padding: 10px 16px;
-  background: #555;
-  color: #f1f1f1;
+  background-color: rgba(0 0 0 / 8%);
   z-index: 999;
+  position: sticky;
+  top: 0;
 }
 
-.sticky {
-  position: fixed;
-  top: 0;
-  width: 100%;
+.scroll {
+  background-color: var(--primary-white);
+  border-bottom: var(--primary-border);
 }
 </style>
