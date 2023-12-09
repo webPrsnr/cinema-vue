@@ -13,7 +13,7 @@
   &__faq {
     position: absolute;
     left: 1rem;
-    bottom: 1rem;
+    bottom: 2.5rem;
     display: grid;
     grid-template-columns: 1fr 4fr;
     align-items: center;
