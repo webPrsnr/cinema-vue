@@ -9,7 +9,7 @@ document.body.innerHTML = `
 describe('test AppHeader', () => {
   it('should render', () => {
     const wrapper = mount(AppHeader)
-    expect(wrapper.find('h2').text()).toBe('My Header')
+    expect(wrapper.find('h2').text()).toBe('в-синема')
   })
   it("component's class 'sticky' is false", () => {
     const wrapper = mount(AppHeader)
