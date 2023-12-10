@@ -1,6 +1,7 @@
 import type { FilmInfo } from '@/listFilms'
 import { useGetObj } from './useGetObj'
 import { type ShallowRef, computed, toValue, ref, watchEffect, onMounted, onUnmounted } from 'vue'
+import { disableOpacity } from './useHeader'
 
 // const isNotNull = (el: FilmInfo | null): el is FilmInfo => {
 //   return Object.is(el, !null)
@@ -41,6 +42,7 @@ export const useSwitchTab = (films: ShallowRef<FilmInfo[]>) => {
   })
 
   const listener = () => {
+    disableOpacity()
     const path = window.location.pathname
     if (path === routes.list) toggleSwitchTab({ path: 'list' })
   }

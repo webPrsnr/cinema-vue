@@ -1,20 +1,18 @@
 <script setup lang="ts">
-import { onMounted, onUnmounted, ref } from 'vue'
-
-// хук useScroll который принимает функцию обработчик скролла
-// инициализируется тут (template ref)
-// хук возвращает функцию, в которую вписываем наш коллбек (функцию с  if условием)
+import { headerFlag } from '@/composable/useHeader'
+import { onMounted, onUnmounted, ref, watchEffect } from 'vue'
 
 const isTopPage = ref(false)
 const headerElement = ref<HTMLElement>()
 
+watchEffect(() => {
+  isTopPage.value = headerFlag.value ? true : false
+})
+
 const handleScroll = () => {
+  if (headerFlag.value) return
   const height = headerElement.value?.clientHeight
-  if (height && window.scrollY >= height) {
-    isTopPage.value = true
-  } else {
-    isTopPage.value = false
-  }
+  isTopPage.value = height && window.scrollY >= height ? true : false
 }
 
 onMounted(() => {

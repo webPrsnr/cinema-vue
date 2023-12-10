@@ -8,6 +8,7 @@ import SpinnerWrapper from './ui/SpinnerWrapper.vue'
 import { useToggle } from '@/composable/useToggle'
 import AppHeading from './ui/AppHeading.vue'
 import FAQ from '@/assets/icons/ask.svg'
+import { enableOpacity } from '@/composable/useHeader'
 
 //TODO
 // 1. css
@@ -19,6 +20,7 @@ const props = defineProps<{
 provide('id', props.card.id)
 
 const { currentState, toggle } = useToggle()
+enableOpacity()
 
 const FilmSeats = defineAsyncComponent({
   loader: () =>

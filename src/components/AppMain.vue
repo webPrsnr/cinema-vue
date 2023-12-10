@@ -5,10 +5,12 @@ import FilmList from './FilmList.vue'
 import FilmCard from './FilmCard.vue'
 import { onBeforeMount, shallowRef } from 'vue'
 import { useSwitchTab } from '@/composable/useSwitchTab'
+import { disableOpacity } from '@/composable/useHeader'
 
 const films = shallowRef<FilmInfo[]>([])
 
 const { currentTab, toggleSwitchTab, currentFilm } = useSwitchTab(films)
+disableOpacity()
 
 onBeforeMount(() => {
   //fetch
