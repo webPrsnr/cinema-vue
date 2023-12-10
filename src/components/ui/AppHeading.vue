@@ -22,7 +22,7 @@ defineProps<{
   padding: 0.25rem;
   border-radius: 0.85rem;
   background-color: var(--primary-white);
-  box-shadow: var(--secondary-shadow);
+  box-shadow: var(--primary-shadow);
 
   &__wrapper {
     display: flex;
