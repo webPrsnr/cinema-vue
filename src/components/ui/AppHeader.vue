@@ -84,7 +84,7 @@ onUnmounted(() => {
 .header {
   padding: 10px 16px;
   background-color: rgba(0 0 0 / 8%);
-  z-index: 999;
+  z-index: 10;
   position: sticky;
   top: 0;
 }
