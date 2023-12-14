@@ -14,7 +14,7 @@ const emit = defineEmits<{
 }>()
 
 const clickHandler = () => {
-  useSetLC(id, props.date, props.time, toValue(props.seats))
+  useSetLC({ id, date: props.date, time: props.time }, toValue(props.seats))
 }
 </script>
 <template>

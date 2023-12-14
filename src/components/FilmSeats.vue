@@ -19,7 +19,7 @@ const props = defineProps<{
 //   useGetLC(id, props.seats.time, props.date.getTime())?.concat(props.seats.reserved) ||
 //   props.seats.reserved
 
-let res = useGetLC(id, props.seats.time, props.date) || props.seats.reserved
+let res = useGetLC({ id, time: props.seats.time, date: props.date }) || props.seats.reserved
 !isReactive(res) && (res = res.concat(props.seats.reserved))
 
 const emit = defineEmits<{

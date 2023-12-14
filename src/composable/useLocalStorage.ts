@@ -7,6 +7,12 @@ interface StorageRef {
   reservedSeats: number[]
 }
 
+interface LCProps {
+  id: number
+  date: number
+  time: string
+}
+
 const LOCALE_STORAGE_KEY = 'reserved'
 
 const isExist = (el: StorageRef, id: number, date: number, time: string) =>
@@ -16,7 +22,7 @@ const initLocaleStorage = () => {
   let store = reactive<StorageRef[]>([])
   const localeStorage = window.localStorage
 
-  const get = (id: number, time: string, date: number) => {
+  const get = ({ date, id, time }: LCProps) => {
     const value = localeStorage.getItem(LOCALE_STORAGE_KEY)
     if (value) {
       const obj: StorageRef[] = JSON.parse(value)
@@ -27,7 +33,7 @@ const initLocaleStorage = () => {
     return store.find((el) => isExist(el, id, date, time))?.reservedSeats || null
   }
 
-  const set = (id: number, date: number, time: string, seats: number[]) => {
+  const set = ({ date, id, time }: LCProps, seats: number[]) => {
     const index = store.findIndex((el) => isExist(el, id, date, time))
     if (index >= 0) {
       store[index].reservedSeats.push(...seats)
