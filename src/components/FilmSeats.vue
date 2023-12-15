@@ -37,6 +37,12 @@ const removeHandler = (id: number) => {
   reserveSeats.value.splice(index, 1)
 }
 
+const clearHandler = () => {
+  const length = reserveSeats.value.length
+  reserveSeats.value.splice(0, length)
+  emit('moveBackHandler')
+}
+
 const moveBackHandler = () => {
   emit('moveBackHandler')
 }
@@ -56,6 +62,7 @@ const moveBackHandler = () => {
       <SeatsOrder
         :seats="reserveSeats"
         @remove-order="removeHandler"
+        @clear-handler="clearHandler"
         :date="date"
         :time="seats.time"
       />
