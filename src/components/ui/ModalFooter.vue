@@ -11,6 +11,7 @@ const closeHandler = () => {
 
 const acceptHandler = () => {
   props.clickHandler()
+  modal.close()
 }
 </script>
 
