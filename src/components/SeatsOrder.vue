@@ -4,6 +4,8 @@ import { useSetLC } from '@/composable/useLocalStorage'
 import { inject, toValue } from 'vue'
 import AppHeading from './ui/AppHeading.vue'
 import HeadIcon from '@/assets/icons/seat.svg'
+import { modal } from '@/composable/useModal'
+import ModalWrapper from './ui/ModalWrapper.vue'
 
 const props = defineProps<{ seats: number[]; date: number; time: string }>()
 
@@ -11,10 +13,21 @@ const id = inject('id') as number
 
 const emit = defineEmits<{
   (e: 'removeOrder', seat: number): void
+  (e: 'clearHandler'): void
 }>()
 
 const clickHandler = () => {
-  useSetLC({ id, date: props.date, time: props.time }, toValue(props.seats))
+  modal.open({
+    component: ModalWrapper,
+    props: {
+      title: 'Занять места?',
+      text: 'Вы действительно хотите занять эти места? Обратите внимание, что Вы можете выбрать неограниченное количество мест.',
+      accept: () => {
+        useSetLC({ id, date: props.date, time: props.time }, toValue(props.seats))
+        emit('clearHandler')
+      }
+    }
+  })
 }
 </script>
 <template>
