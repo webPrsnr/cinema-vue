@@ -20,10 +20,14 @@ export interface TabProps {
 export const useSwitchTab = (films: ShallowRef<FilmInfo[]>) => {
   const currentFilm = ref<FilmInfo | false>(false)
 
-  const toggleSwitchTab = (props: TabProps) => {
+  const toggleSwitchTab = (props: TabProps | null) => {
     const listFilms = toValue(films)
-    const obj = props.id ? useGetObj(props.id, listFilms) : null
-    currentFilm.value = obj || false
+    if (props) {
+      const obj = props.id ? useGetObj(props.id, listFilms) : null
+      currentFilm.value = obj || false
+      return
+    }
+    currentFilm.value = false
   }
 
   const currentTab = computed(() => (currentFilm.value ? 'card' : 'list'))

@@ -5,12 +5,10 @@ import FilmList from './FilmList.vue'
 import FilmCard from './FilmCard.vue'
 import { onBeforeMount, shallowRef } from 'vue'
 import { useSwitchTab } from '@/composable/useSwitchTab'
-import { disableOpacity } from '@/composable/useHeader'
 
 const films = shallowRef<FilmInfo[]>([])
 
 const { currentTab, toggleSwitchTab, currentFilm } = useSwitchTab(films)
-disableOpacity()
 
 onBeforeMount(() => {
   //fetch
@@ -20,9 +18,12 @@ onBeforeMount(() => {
 <template>
   <main>
     <section class="main">
-      <h2>Заказ билетов</h2>
       <FilmList v-if="currentTab === 'list'" :list="films" @update="toggleSwitchTab" />
-      <FilmCard v-if="currentTab === 'card' && currentFilm" :card="currentFilm" />
+      <FilmCard
+        v-if="currentTab === 'card' && currentFilm"
+        :card="currentFilm"
+        @update="toggleSwitchTab"
+      />
     </section>
   </main>
 </template>

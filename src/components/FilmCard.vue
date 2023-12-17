@@ -19,6 +19,10 @@ const props = defineProps<{
   card: FilmInfo
 }>()
 
+const emit = defineEmits<{
+  (e: 'update', props: null): void
+}>()
+
 provide('id', props.card.id)
 
 const { currentState, toggle } = useToggle()
@@ -49,11 +53,15 @@ const moveBackHandler = () => {
     toggle()
   }, 600)
 }
+
+const listPageHandler = () => {
+  emit('update', null)
+}
 </script>
 <template>
   <section>
     <div class="top">
-      <BackBtn title="К списку" position="left" class="top__btn">
+      <BackBtn title="К списку" position="left" class="top__btn" @click="listPageHandler">
         <ListIcon class="list-icon" />
       </BackBtn>
       <AppHeading title="Подробнее о фильме">
