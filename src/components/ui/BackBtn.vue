@@ -1,11 +1,15 @@
 <script setup lang="ts">
-import ArrowUp from '@/assets/icons/arrow-up.svg'
+defineProps<{
+  title: string
+  position: 'left' | 'right'
+}>()
 </script>
 
 <template>
   <section class="seats-back__wrapper">
-    <span class="seats-back__btn">Назад</span>
-    <ArrowUp class="seats-back__arrow" />
+    <slot v-if="position === 'left'" />
+    <span class="seats-back__btn">{{ title }}</span>
+    <slot v-if="position === 'right'" />
   </section>
 </template>
 
@@ -13,21 +17,18 @@ import ArrowUp from '@/assets/icons/arrow-up.svg'
 .seats-back {
   &__wrapper {
     position: absolute;
-    display: flex;
+    display: inline-flex;
+    gap: 0.25rem;
     align-items: flex-start;
-    left: 1rem;
-    top: 5rem;
     background-color: var(--primary-white);
     padding: 1rem;
     border-radius: 0.85rem;
     box-shadow: var(--secondary-shadow);
     cursor: pointer;
-  }
 
-  &__arrow {
-    width: 18px;
-    height: 18px;
-    stroke: var(--primary-icon);
+    &:hover {
+      background-color: var(--disabled-btn);
+    }
   }
 }
 </style>
