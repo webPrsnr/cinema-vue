@@ -4,7 +4,8 @@ import SeatsOrder from './SeatsOrder.vue'
 import SeatsChairs from './SeatsChairs.vue'
 import SeatsFaq from './SeatsFaq.vue'
 import SeatsTime from './SeatsTime.vue'
-import SeatsBackBtn from './SeatsBackBtn.vue'
+import BackBtn from '@/components/ui/BackBtn.vue'
+import ArrowUp from '@/assets/icons/arrow-up.svg'
 import { inject, isReactive, ref } from 'vue'
 import { useGetLC } from '@/composable/useLocalStorage'
 
@@ -50,7 +51,9 @@ const moveBackHandler = () => {
 <template>
   <section class="seats__wrapper">
     <SeatsTime :time="props.seats.time" :date="props.date" />
-    <SeatsBackBtn @click="moveBackHandler" />
+    <BackBtn title="Назад" position="right" class="back-btn" @click="moveBackHandler">
+      <ArrowUp class="arrow-icon" />
+    </BackBtn>
     <div class="chairs__wrapper">
       <SeatsChairs
         :chairs="props.seats.totalSeats"
@@ -84,6 +87,17 @@ const moveBackHandler = () => {
   &__title {
     padding: 2.5rem;
   }
+}
+
+.back-btn {
+  left: 1rem;
+  top: 5rem;
+}
+
+.arrow-icon {
+  width: 18px;
+  height: 18px;
+  stroke: var(--primary-icon);
 }
 
 .chairs {

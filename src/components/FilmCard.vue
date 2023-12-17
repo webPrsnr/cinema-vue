@@ -8,6 +8,8 @@ import SpinnerWrapper from './ui/SpinnerWrapper.vue'
 import { useToggle } from '@/composable/useToggle'
 import AppHeading from './ui/AppHeading.vue'
 import FAQ from '@/assets/icons/ask.svg'
+import BackBtn from '@/components/ui/BackBtn.vue'
+import ListIcon from '@/assets/icons/list.svg'
 import { enableOpacity } from '@/composable/useHeader'
 
 //TODO
@@ -50,9 +52,14 @@ const moveBackHandler = () => {
 </script>
 <template>
   <section>
-    <AppHeading title="Подробнее о фильме">
-      <FAQ class="head-icon" />
-    </AppHeading>
+    <div class="top">
+      <BackBtn title="К списку" position="left" class="top__btn">
+        <ListIcon class="list-icon" />
+      </BackBtn>
+      <AppHeading title="Подробнее о фильме">
+        <FAQ class="head-icon" />
+      </AppHeading>
+    </div>
     <div class="wrapper">
       <div class="wrapper__film">
         <section class="el">
@@ -98,6 +105,20 @@ const moveBackHandler = () => {
   </section>
 </template>
 <style scoped>
+.top {
+  position: relative;
+
+  &__btn {
+    right: 1%;
+  }
+}
+
+.list-icon {
+  width: 18px;
+  height: 18px;
+  fill: var(--primary-icon);
+}
+
 .head-icon {
   width: 25px;
   height: 25px;
