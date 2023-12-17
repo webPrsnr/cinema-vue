@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { disableOpacity } from '@/composable/useHeader'
 import type { TabProps } from '@/composable/useSwitchTab'
 import type { FilmInfo } from '@/listFilms'
 interface FilmInfoProps {
@@ -9,6 +10,8 @@ interface FilmListEmit {
 }
 const props = defineProps<FilmInfoProps>()
 const emit = defineEmits<FilmListEmit>()
+
+disableOpacity()
 
 const joinGenre = (genres: string[]) => genres.join(', ')
 
