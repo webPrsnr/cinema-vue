@@ -85,8 +85,10 @@ onUnmounted(() => {
   padding: 10px 16px;
   background-color: rgba(0 0 0 / 8%);
   z-index: 10;
-  position: sticky;
+  position: fixed;
+  width: 100%;
   top: 0;
+  left: 0;
 }
 
 .scroll {
