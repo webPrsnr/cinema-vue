@@ -2,6 +2,8 @@
 import { disableOpacity } from '@/composable/useHeader'
 import type { TabProps } from '@/composable/useSwitchTab'
 import type { FilmInfo } from '@/listFilms'
+import Carousel from './ui/TheCarousel.vue'
+
 interface FilmInfoProps {
   list: FilmInfo[]
 }
@@ -18,8 +20,16 @@ const joinGenre = (genres: string[]) => genres.join(', ')
 const getId = (id: number) => {
   emit('update', { path: 'card', id })
 }
+
+const imgList: { src: string; alt: string }[] = [
+  { src: '4849606', alt: 'carousel_img_1' },
+  { src: '4849616', alt: 'carousel_img_2' },
+  { src: '4849635', alt: 'carousel_img_3' },
+  { src: '4849670', alt: 'carousel__img_4' }
+]
 </script>
 <template>
+  <Carousel :src-list="imgList" />
   <div class="list">
     <div class="item" v-for="film in props.list" :key="film.name" @click.prevent="getId(film.id)">
       <div class="card">
