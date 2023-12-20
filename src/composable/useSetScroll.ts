@@ -1,4 +1,4 @@
-import { onMounted, onUnmounted } from 'vue'
+import { onMounted, onBeforeUnmount } from 'vue'
 
 export const useSetScroll = () => {
   const body = document.body
@@ -9,7 +9,7 @@ export const useSetScroll = () => {
     }
   })
 
-  onUnmounted(() => {
+  onBeforeUnmount(() => {
     if (body && body.classList.contains(className)) {
       body.classList.remove(className)
     }
