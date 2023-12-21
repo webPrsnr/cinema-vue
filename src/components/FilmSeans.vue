@@ -13,6 +13,50 @@ const emit = defineEmits<{
 const chooseSession = (time: string, date: number) => {
   emit('chooseTime', time, date)
 }
+
+const isDateExpired = (date: number) => {
+  const currentDate = new Date()
+  const [currentDay, currentMonth, currentYear] = [
+    currentDate.getDate(),
+    currentDate.getMonth(),
+    currentDate.getFullYear()
+  ]
+  const initialDate = new Date(date)
+  const [initialDay, inititalMonth, initialYear] = [
+    initialDate.getDate(),
+    initialDate.getMonth(),
+    initialDate.getFullYear()
+  ]
+  const result =
+    currentYear > initialYear
+      ? false
+      : currentMonth > inititalMonth
+      ? false
+      : currentDay > initialDay
+      ? false
+      : true
+  return result
+}
+
+const isTimeExpired = (initialTime: string, date: number) => {
+  const currentTime = new Date()
+  const initialDate = new Date(date)
+  const [initialDay, inititalMonth] = [initialDate.getDay(), initialDate.getMonth()]
+  const [min, hour, currentDay, currentMonth] = [
+    currentTime.getMinutes(),
+    currentTime.getHours(),
+    currentTime.getDay(),
+    currentTime.getMonth()
+  ]
+
+  const convertedTime = `${hour}.${min}`
+
+  const result =
+    currentMonth === inititalMonth && currentDay === initialDay && convertedTime >= initialTime
+      ? false
+      : true
+  return result
+}
 </script>
 <template>
   <section class="session__wrapper">
@@ -20,19 +64,23 @@ const chooseSession = (time: string, date: number) => {
       <Time class="head-icon" />
     </AppHeading>
     <div class="scroll">
-      <section class="session" v-for="(date, index) in props.dates" :key="index">
-        <h2 class="session__time">{{ new Date(date.date).toLocaleDateString() }}</h2>
-        <div class="times">
-          <section class="time" v-for="sess in date.session" :key="sess.time">
-            <h3
-              class="time__title"
-              @click="chooseSession(sess.time, new Date(date.date).getTime())"
-            >
-              {{ sess.time }}
-            </h3>
-          </section>
-        </div>
-      </section>
+      <template v-for="(date, index) in props.dates" :key="index">
+        <section class="session" v-if="isDateExpired(date.date)">
+          <h2 class="session__time">{{ new Date(date.date).toLocaleDateString() }}</h2>
+          <div class="times">
+            <template v-for="sess in date.session" :key="sess.time">
+              <section class="time" v-if="isTimeExpired(sess.time, date.date)">
+                <h3
+                  class="time__title"
+                  @click="chooseSession(sess.time, new Date(date.date).getTime())"
+                >
+                  {{ sess.time }}
+                </h3>
+              </section>
+            </template>
+          </div>
+        </section>
+      </template>
     </div>
   </section>
 </template>
