@@ -6,6 +6,7 @@ export const useSetScroll = () => {
   onMounted(() => {
     if (body && !body.classList.contains(className)) {
       body.classList.add(className)
+      window.scrollTo(0, 0)
     }
   })
 
