@@ -50,7 +50,16 @@ const initLocaleStorage = () => {
     localeStorage.setItem(LOCALE_STORAGE_KEY, JSON.stringify(store))
   }
 
-  return { get, set }
+  const getAllItems = () => {
+    const value = localeStorage.getItem(LOCALE_STORAGE_KEY)
+    if (value) {
+      const obj: StorageRef[] = JSON.parse(value)
+      return obj
+    }
+    return []
+  }
+
+  return { get, set, getAllItems }
 }
 
-export const { get: useGetLC, set: useSetLC } = initLocaleStorage()
+export const { get: useGetLC, set: useSetLC, getAllItems } = initLocaleStorage()

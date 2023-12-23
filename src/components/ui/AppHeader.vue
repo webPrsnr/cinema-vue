@@ -1,6 +1,10 @@
 <script setup lang="ts">
 import { headerFlag } from '@/composable/useHeader'
+import { modal } from '@/composable/useModal'
 import { onMounted, onUnmounted, ref, watchEffect } from 'vue'
+import ModalWrapper from './ModalWrapper.vue'
+import ModalFAQ from './ModalFAQ.vue'
+import ModalArchive from './ModalArchive.vue'
 
 const isTopPage = ref(false)
 const headerElement = ref<HTMLElement>()
@@ -22,6 +26,28 @@ onMounted(() => {
 onUnmounted(() => {
   document.removeEventListener('scroll', handleScroll)
 })
+
+const clickFAQHandle = () => {
+  modal.open({
+    component: ModalWrapper,
+    props: {
+      title: 'FAQ',
+      text: ModalFAQ,
+      closeBtn: true
+    }
+  })
+}
+
+const clickArchiveHandle = () => {
+  modal.open({
+    component: ModalWrapper,
+    props: {
+      title: 'Архив билетов',
+      text: ModalArchive,
+      closeBtn: true
+    }
+  })
+}
 </script>
 <template>
   <header ref="headerElement" class="header" :class="{ scroll: isTopPage }">
@@ -29,8 +55,8 @@ onUnmounted(() => {
       <div class="wrapper">
         <h2 class="wrapper__title" :class="{ 'wrapper__title-scroll': isTopPage }">в-синема</h2>
         <div class="wrapper__links">
-          <a class="wrapper__link" href="">FAQ</a>
-          <a class="wrapper__link" href="">Архив</a>
+          <a class="wrapper__link" href="" @click.prevent="clickFAQHandle">FAQ</a>
+          <a class="wrapper__link" href="" @click.prevent="clickArchiveHandle">Архив</a>
         </div>
       </div>
     </div>

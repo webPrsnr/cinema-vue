@@ -4,15 +4,18 @@ import ModalClose from './ModalClose.vue'
 import ModalFooter from './ModalFooter.vue'
 
 defineProps<ModalProps>()
+
+const isText = (text: ModalProps['text']) => (typeof text === 'string' ? true : false)
 </script>
 
 <template>
   <div class="inner">
     <ModalClose v-if="closeBtn" />
     <h2>{{ title }}</h2>
-    <p>
+    <p v-if="isText(text)">
       {{ text }}
     </p>
+    <component v-else :is="text" />
     <ModalFooter v-if="accept" :click-handler="accept" />
   </div>
 </template>

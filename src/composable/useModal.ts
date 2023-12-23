@@ -1,7 +1,7 @@
 import { type Component, shallowRef } from 'vue'
 
 export interface ModalProps {
-  text: string
+  text: string | Component
   title: string
   closeBtn?: true
   accept?: () => void
