@@ -11,6 +11,7 @@ import FAQ from '@/assets/icons/ask.svg'
 import BackBtn from '@/components/ui/BackBtn.vue'
 import ListIcon from '@/assets/icons/list.svg'
 import { enableOpacity } from '@/composable/useHeader'
+import { useHead } from '@unhead/vue'
 
 //TODO
 // 1. css
@@ -24,6 +25,11 @@ const emit = defineEmits<{
 }>()
 
 provide('id', props.card.id)
+
+useHead({
+  title: `В-Синема. ${props.card.name}`,
+  meta: [{ name: 'description', content: props.card.description }]
+})
 
 const { currentState, toggle } = useToggle()
 enableOpacity()

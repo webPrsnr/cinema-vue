@@ -3,6 +3,8 @@ import { disableOpacity } from '@/composable/useHeader'
 import type { TabProps } from '@/composable/useSwitchTab'
 import type { FilmInfo } from '@/listFilms'
 import Carousel from './ui/TheCarousel.vue'
+import { useHead } from '@unhead/vue'
+import { metaList } from '@/utils/metaTags'
 
 interface FilmInfoProps {
   list: FilmInfo[]
@@ -12,6 +14,11 @@ interface FilmListEmit {
 }
 const props = defineProps<FilmInfoProps>()
 const emit = defineEmits<FilmListEmit>()
+
+useHead({
+  title: 'В-Синема. Список фильмов.',
+  meta: metaList
+})
 
 disableOpacity()
 
