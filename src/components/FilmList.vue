@@ -5,6 +5,7 @@ import type { FilmInfo } from '@/listFilms'
 import Carousel from './ui/TheCarousel.vue'
 import { useHead } from '@unhead/vue'
 import { metaList } from '@/utils/metaTags'
+import { joinGenres } from '@/utils/joinGenres'
 
 interface FilmInfoProps {
   list: FilmInfo[]
@@ -22,8 +23,6 @@ useHead({
 
 disableOpacity()
 
-const joinGenre = (genres: string[]) => genres.join(', ')
-
 const getId = (id: number) => {
   emit('update', { path: 'card', id })
 }
@@ -38,17 +37,26 @@ const imgList: { src: string; alt: string }[] = [
 <template>
   <Carousel :src-list="imgList" />
   <div class="list">
-    <div class="item" v-for="film in props.list" :key="film.name" @click.prevent="getId(film.id)">
-      <div class="card">
-        <div class="poster">
-          <a href="" class="movie" :style="`background-image: url(${film.imgTitle})`"></a>
-        </div>
-        <div class="head">
-          <a href="" class="title"
-            ><span>{{ film.name }}</span></a
-          >
-          <div class="genre">
-            {{ joinGenre(film.genres) }}
+    <h1 class="list__title">Афиша кино</h1>
+    <div class="list__container">
+      <div
+        class="list__item"
+        v-for="film in props.list"
+        :key="film.name"
+        @click.prevent="getId(film.id)"
+      >
+        <div class="item">
+          <div class="item__picture">
+            <a
+              href=""
+              class="item__picture-image"
+              :style="`background-image: url(${film.imgTitle})`"
+            ></a>
+            <span class="item__picture-age-limit">{{ `${film.ageLimit}+` }}</span>
+          </div>
+          <div class="item__container">
+            <h5 class="item__title">{{ film.name }}</h5>
+            <div class="item__genres">{{ joinGenres(film.genres) }}</div>
           </div>
         </div>
       </div>
@@ -56,39 +64,74 @@ const imgList: { src: string; alt: string }[] = [
   </div>
 </template>
 <style scoped>
-.poster {
-  float: left;
-}
-
-.title {
-  font-size: 28px;
-  line-height: 34px;
-  color: black;
-}
-
-.head {
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
-}
-
 .list {
-  display: flex;
-  flex-wrap: wrap;
+  max-width: 1292px;
+  padding: 0 20px;
+  margin: 0 auto;
+  width: 100%;
+
+  &__title {
+    font-size: 32px;
+    margin: 23px 0;
+  }
+
+  &__container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+
+  &__item {
+    padding: 20px;
+    flex: 0 0 50%;
+    cursor: pointer;
+  }
 }
 
 .item {
-  padding: 20px;
-  flex: 0 0 50%;
-  cursor: pointer;
-}
+  display: grid;
+  grid-template-columns: 1fr 1fr;
 
-.movie {
-  height: 354px;
-  width: 240px;
-  display: block;
-  background-position: 50%;
-  background-repeat: no-repeat;
-  background-size: cover;
+  &__picture {
+    position: relative;
+
+    &-image {
+      height: 354px;
+      width: 275px;
+      display: block;
+      background-position: 50%;
+      background-repeat: no-repeat;
+      background-size: cover;
+      border-radius: 0.6rem;
+      transition: transform 0.5s;
+
+      &:hover {
+        transform: scale(1.03);
+      }
+    }
+
+    &-age-limit {
+      position: absolute;
+      top: 5%;
+      left: 5%;
+      color: var(--primary-white);
+      background-color: var(--secondary-icon);
+      padding: 0.2rem;
+    }
+  }
+
+  &__container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  &__title {
+    font-size: 28px;
+  }
+
+  &__genres {
+    margin-top: 15px;
+    font-size: 16px;
+  }
 }
 </style>

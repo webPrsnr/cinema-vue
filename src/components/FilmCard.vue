@@ -12,6 +12,8 @@ import BackBtn from '@/components/ui/BackBtn.vue'
 import ListIcon from '@/assets/icons/list.svg'
 import { enableOpacity } from '@/composable/useHeader'
 import { useHead } from '@unhead/vue'
+import { converToHour } from '@/utils/convertToHour'
+import { joinGenres } from '@/utils/joinGenres'
 
 //TODO
 // 1. css
@@ -66,59 +68,80 @@ const listPageHandler = () => {
 </script>
 <template>
   <section>
-    <div class="top">
-      <BackBtn title="К списку" position="left" class="top__btn" @click="listPageHandler">
-        <ListIcon class="list-icon" />
-      </BackBtn>
-      <AppHeading title="Подробнее о фильме">
-        <FAQ class="head-icon" />
-      </AppHeading>
-    </div>
-    <div class="wrapper">
-      <div class="wrapper__film">
-        <section class="el">
-          <div class="poster" :style="`background-image:url(${props.card.imgTitle})`"></div>
-        </section>
-        <section class="el el__description">
-          <h1>О фильме</h1>
-          <div class="el__description description">
-            <section class="el__year">
-              <h2>Возрастные ограничения</h2>
-            </section>
-            <section class="el__about">
-              <h2>Подробнее о фильме</h2>
-              <div class="info">
-                <div>Старт проката</div>
-                <div>{{ props.card.start.toLocaleDateString() }}</div>
-                <div>Режисер</div>
-                <div>{{ props.card.director }}</div>
-                <div>В главных ролях</div>
-                <div>
-                  <span v-for="actor in props.card.starring" :key="actor">{{ `${actor}, ` }}</span>
-                </div>
-                <div>Описание</div>
-                <div>
-                  {{ props.card.description }}
+    <div class="container">
+      <div class="top">
+        <BackBtn title="К списку" position="left" class="top__btn" @click="listPageHandler">
+          <ListIcon class="list-icon" />
+        </BackBtn>
+        <AppHeading title="Подробнее о фильме">
+          <FAQ class="head-icon" />
+        </AppHeading>
+      </div>
+      <div class="card">
+        <div class="card__wrapper">
+          <section class="card__poster">
+            <div
+              class="card__poster-image"
+              :style="`background-image:url(${props.card.imgTitle})`"
+            ></div>
+          </section>
+          <section class="card__main">
+            <h1 class="card__title">«{{ card.name }}»</h1>
+            <div class="card__info">
+              <span>{{ card.country }}</span
+              >,&nbsp;<span>{{ converToHour(card.duration) }}</span>
+              <div>{{ joinGenres(card.genres) }}</div>
+              <div class="card__age">
+                <div class="card__limit">
+                  <div class="card__sign">{{ card.ageLimit }}+</div>
                 </div>
               </div>
-            </section>
-          </div>
-        </section>
-        <FilmSeans @choose-time="chooseTimeHandler" :dates="props.card.dates" />
+            </div>
+
+            <div class="card__description">
+              <section class="film">
+                <div class="film__info">
+                  <div class="film__caption">Старт проката</div>
+                  <div class="film__content">{{ props.card.start.toLocaleDateString() }}</div>
+                  <div class="film__caption">Режисер</div>
+                  <div class="film__content">{{ props.card.director }}</div>
+                  <div class="film__caption">В главных ролях</div>
+                  <div class="film__content">
+                    <span v-for="actor in props.card.starring" :key="actor">{{
+                      `${actor}, `
+                    }}</span>
+                  </div>
+                  <div class="film__caption">Описание</div>
+                  <div class="film__content">
+                    {{ props.card.description }}
+                  </div>
+                </div>
+              </section>
+            </div>
+          </section>
+          <FilmSeans @choose-time="chooseTimeHandler" :dates="props.card.dates" />
+        </div>
+        <SpinnerWrapper v-if="currentState()">
+          <FilmSeats
+            v-if="seats"
+            :seats="setSeats"
+            :date="seats.clickedDate"
+            :id="card.id"
+            @moveBackHandler="moveBackHandler"
+          />
+        </SpinnerWrapper>
       </div>
-      <SpinnerWrapper v-if="currentState()">
-        <FilmSeats
-          v-if="seats"
-          :seats="setSeats"
-          :date="seats.clickedDate"
-          :id="card.id"
-          @moveBackHandler="moveBackHandler"
-        />
-      </SpinnerWrapper>
     </div>
   </section>
 </template>
 <style scoped>
+.container {
+  max-width: 1299px;
+  padding: 0 6px;
+  margin: 0 auto;
+  width: 100%;
+}
+
 .top {
   margin-top: 3.5rem;
   position: relative;
@@ -140,46 +163,55 @@ const listPageHandler = () => {
   fill: var(--primary-white);
 }
 
-.wrapper {
-  display: grid;
-
-  &__film {
+.card {
+  &__wrapper {
     display: grid;
     grid-template-columns: max-content 2fr 1fr;
     grid-column-gap: 0.5rem;
   }
-}
 
-.el {
-  border: 1px solid red;
-
-  &__description {
-    display: flex;
-    flex-direction: column;
+  &__poster-image {
+    width: 280px;
+    height: 420px;
+    background-repeat: no-repeat;
+    background-size: cover;
+    overflow: hidden;
+    background-position: center;
+    border-radius: 0.6rem;
   }
 
-  &__year {
-    flex-grow: 1;
+  &__title {
+    font-size: 32px;
+    margin-bottom: 1rem;
+  }
+
+  &__info {
+    margin-bottom: 1.85rem;
+    color: var(--font-color);
+  }
+
+  &__age {
+    margin-top: 0.75rem;
+  }
+
+  &__sign {
+    padding: 0.5rem;
+    display: inline;
+    border: 2px solid var(--primary-icon);
+    border-radius: 0.75rem;
   }
 }
 
-.poster {
-  width: 280px;
-  height: 420px;
-  background-repeat: no-repeat;
-  background-size: cover;
-  overflow: hidden;
-  background-position: center;
-}
+.film {
+  &__info {
+    display: grid;
+    grid-template-columns: max-content 1fr;
+    grid-column-gap: 2.5rem;
+    row-gap: 1.25rem;
+  }
 
-.description {
-  flex-grow: 1;
-}
-
-.info {
-  display: grid;
-  grid-template-columns: max-content 1fr;
-  grid-column-gap: 10px;
-  row-gap: 5px;
+  &__caption {
+    color: var(--font-color);
+  }
 }
 </style>
