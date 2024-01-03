@@ -2,9 +2,9 @@
 import { headerFlag } from '@/composable/useHeader'
 import { modal } from '@/composable/useModal'
 import { onMounted, onUnmounted, ref, watchEffect } from 'vue'
-import ModalWrapper from './ModalWrapper.vue'
-import ModalFAQ from './ModalFAQ.vue'
-import ModalArchive from './ModalArchive.vue'
+import ModalWrapper from '../modals/ui/ModalWrapper.vue'
+import ModalFAQ from '../modals/ui/ModalFAQ.vue'
+import ModalArchive from '../modals/ui/ModalArchive.vue'
 
 const isTopPage = ref(false)
 const headerElement = ref<HTMLElement>()

@@ -1,14 +1,14 @@
 <script setup lang="ts">
 import type { FilmInfo } from '@/listFilms'
-import FilmSeans from './FilmSeans.vue'
+import FilmSeans from './components/FilmSeans.vue'
 import { defineAsyncComponent, provide } from 'vue'
 import { useSetSeats } from '@/composable/useSetSeats'
 import { useSetScroll } from '@/composable/useSetScroll'
-import SpinnerWrapper from './ui/SpinnerWrapper.vue'
+import SpinnerWrapper from '@/components/spinner/SpinnerWrapper.vue'
 import { useToggle } from '@/composable/useToggle'
-import AppHeading from './ui/AppHeading.vue'
+import AppHeading from '@/components/ui/AppHeading.vue'
 import FAQ from '@/assets/icons/ask.svg'
-import BackBtn from '@/components/ui/BackBtn.vue'
+import BackBtn from '@/components/buttons/BackBtn.vue'
 import ListIcon from '@/assets/icons/list.svg'
 import { enableOpacity } from '@/composable/useHeader'
 import { useHead } from '@unhead/vue'
@@ -39,7 +39,7 @@ enableOpacity()
 const FilmSeats = defineAsyncComponent({
   loader: () =>
     new Promise<any>((res) => {
-      setTimeout(() => res(import('./FilmSeats.vue')), 0)
+      setTimeout(() => res(import('../Seats/SeatsView.vue')), 0)
     })
 })
 

@@ -2,7 +2,7 @@
 import { disableOpacity } from '@/composable/useHeader'
 import type { TabProps } from '@/composable/useSwitchTab'
 import type { FilmInfo } from '@/listFilms'
-import Carousel from './ui/TheCarousel.vue'
+import TheCarousel from '@/components/carousel/TheCarousel.vue'
 import { useHead } from '@unhead/vue'
 import { metaList } from '@/utils/metaTags'
 import { joinGenres } from '@/utils/joinGenres'
@@ -35,7 +35,7 @@ const imgList: { src: string; alt: string }[] = [
 ]
 </script>
 <template>
-  <Carousel :src-list="imgList" />
+  <TheCarousel :src-list="imgList" />
   <div class="list">
     <h1 class="list__title">Афиша кино</h1>
     <div class="list__container">

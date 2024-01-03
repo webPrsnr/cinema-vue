@@ -1,7 +1,6 @@
 import { describe, it, expect } from 'vitest'
 import { mount } from '@vue/test-utils'
-import AppHeader from './AppHeader.vue'
-import { enableOpacity } from '@/composable/useHeader'
+import AppHeader from '../AppHeader.vue'
 
 document.body.innerHTML = `
 <div id="app" style="height:10000px">

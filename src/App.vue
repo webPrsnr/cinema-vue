@@ -1,12 +1,7 @@
 <script setup lang="ts">
-import AppHeader from '@/components/ui/AppHeader.vue'
-import AppMain from './components/AppMain.vue'
-import ModalWindow from '@/components/ui/ModalWindow.vue'
-import './index.css'
+import MainLayout from '@/layouts/MainLayout.vue'
 </script>
 
 <template>
-  <AppHeader />
-  <AppMain />
-  <ModalWindow />
+  <MainLayout />
 </template>

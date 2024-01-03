@@ -1,6 +1,6 @@
 import { describe, it, expect } from 'vitest'
 import { modal } from './useModal'
-import ModalWrapper from '@/components/ui/ModalWrapper.vue'
+import ModalWrapper from '@/components/modals/ui/ModalWrapper.vue'
 
 const basicState = { component: null, props: {} }
 describe('test useModal hook', () => {

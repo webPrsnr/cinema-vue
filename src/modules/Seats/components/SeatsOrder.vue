@@ -2,10 +2,10 @@
 import IconDelete from '@/assets/icons/delete.svg'
 import { useSetLC } from '@/composable/useLocalStorage'
 import { inject, toValue } from 'vue'
-import AppHeading from './ui/AppHeading.vue'
+import AppHeading from '@/components/ui/AppHeading.vue'
 import HeadIcon from '@/assets/icons/seat.svg'
 import { modal } from '@/composable/useModal'
-import ModalWrapper from './ui/ModalWrapper.vue'
+import ModalWrapper from '@/components/modals/ui/ModalWrapper.vue'
 
 const props = defineProps<{ seats: number[]; date: number; time: string }>()
 

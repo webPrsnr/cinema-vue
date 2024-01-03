@@ -48,7 +48,7 @@ const film: FilmInfo = {
     'В жизни Натальи Пыжовой всё отлично: крепкий дом, любящий муж, дружная семья. Для полного счастья осталось только дочерей замуж выдать. Но идеальная картина рушится в одночасье, когда выясняется, что муж, оказывается, изменник, а дочери со своими женихами, мягко говоря, не очень-то счастливы. Когда всё семейство собирается вместе на очередное торжество, становится понятно, что эти праздники или разрушат семью до основания, или сделают её только крепче.',
   dates: [
     {
-      date: 1701032400000,
+      date: 1703942400000,
       session: [
         { time: '10.00', totalSeats: 48, reserved: [2, 3, 4, 10] },
         { time: '12.00', totalSeats: 48, reserved: [] },
@@ -59,7 +59,7 @@ const film: FilmInfo = {
       ]
     },
     {
-      date: 1701118800000,
+      date: 1703149004150,
       session: [
         { time: '10.00', totalSeats: 48, reserved: [2, 3, 4, 10] },
         { time: '12.00', totalSeats: 48, reserved: [] },
@@ -128,4 +128,74 @@ const secondFilm: FilmInfo = {
     }
   ]
 }
-export const list: FilmInfo[] = [film, secondFilm]
+const film3: FilmInfo = {
+  id: 3,
+  imgTitle: `https://avatars.mds.yandex.net/get-kinopoisk-image/9784475/5efa3117-4056-4b50-9485-e30eeb0ffbe6/300x450`,
+  name: 'Праздники',
+  country: 'Россия',
+  ageLimit: 12,
+  director: 'Борис Дегчарев',
+  duration: 80,
+  genres: ['комедия'],
+  start: new Date(2023, 10, 27),
+  starring: [
+    'Мария Аронова',
+    'Виталий Хаев',
+    'Анастасия Калашникова',
+    'Яна Енжаева',
+    'Никита Павленко',
+    'Вячеслав Чепурченко',
+    'Инга Оболдина',
+    'Денис Парамонов'
+  ],
+  description:
+    'В жизни Натальи Пыжовой всё отлично: крепкий дом, любящий муж, дружная семья. Для полного счастья осталось только дочерей замуж выдать. Но идеальная картина рушится в одночасье, когда выясняется, что муж, оказывается, изменник, а дочери со своими женихами, мягко говоря, не очень-то счастливы. Когда всё семейство собирается вместе на очередное торжество, становится понятно, что эти праздники или разрушат семью до основания, или сделают её только крепче.',
+  dates: [
+    {
+      date: 1705942400000,
+      session: [
+        { time: '10.00', totalSeats: 48, reserved: [2, 3, 4, 10] },
+        { time: '12.00', totalSeats: 48, reserved: [] },
+        { time: '14.00', totalSeats: 48, reserved: [] },
+        { time: '16.00', totalSeats: 48, reserved: [] },
+        { time: '18.00', totalSeats: 48, reserved: [] },
+        { time: '20.00', totalSeats: 48, reserved: [] }
+      ]
+    },
+    {
+      date: 1703149004150,
+      session: [
+        { time: '10.00', totalSeats: 48, reserved: [2, 3, 4, 10] },
+        { time: '12.00', totalSeats: 48, reserved: [] },
+        { time: '14.00', totalSeats: 48, reserved: [] },
+        { time: '16.00', totalSeats: 48, reserved: [] },
+        { time: '18.00', totalSeats: 48, reserved: [] },
+        { time: '20.00', totalSeats: 48, reserved: [] }
+      ]
+    },
+    {
+      date: 1701205200000,
+      session: [
+        { time: '10.00', totalSeats: 48, reserved: [2, 3, 4, 10] },
+        { time: '12.00', totalSeats: 48, reserved: [] },
+        { time: '14.00', totalSeats: 48, reserved: [] },
+        { time: '16.00', totalSeats: 48, reserved: [] },
+        { time: '18.00', totalSeats: 48, reserved: [] },
+        { time: '20.00', totalSeats: 48, reserved: [] }
+      ]
+    },
+    {
+      date: 1701291600000,
+      session: [
+        { time: '10.00', totalSeats: 48, reserved: [2, 3, 4, 10] },
+        { time: '12.00', totalSeats: 48, reserved: [] },
+        { time: '14.00', totalSeats: 48, reserved: [] },
+        { time: '16.00', totalSeats: 48, reserved: [] },
+        { time: '18.00', totalSeats: 48, reserved: [] },
+        { time: '20.00', totalSeats: 48, reserved: [] }
+      ]
+    }
+  ]
+}
+
+export const list: FilmInfo[] = [film, secondFilm, film3]

@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { onMounted, ref } from 'vue'
-import AppSpinner from './AppSpinner.vue'
+import AppSpinner from './ui/AppSpinner.vue'
 import { useToggle } from '@/composable/useToggle'
 
 const { currentState, toggle } = useToggle()

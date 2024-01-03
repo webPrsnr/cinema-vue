@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import type { RentalDate } from '@/listFilms'
-import AppHeading from './ui/AppHeading.vue'
+import AppHeading from '@/components/ui/AppHeading.vue'
 import Time from '@/assets/icons/time.svg'
 
 const props = defineProps<{
