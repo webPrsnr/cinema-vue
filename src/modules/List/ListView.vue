@@ -5,7 +5,7 @@ import type { FilmInfo } from '@/listFilms'
 import TheCarousel from '@/components/carousel/TheCarousel.vue'
 import { useHead } from '@unhead/vue'
 import { metaList } from '@/utils/metaTags'
-import { joinGenres } from '@/utils/joinGenres'
+import ListItem from './components/ListItem.vue'
 
 interface FilmInfoProps {
   list: FilmInfo[]
@@ -39,27 +39,15 @@ const imgList: { src: string; alt: string }[] = [
   <div class="list">
     <h1 class="list__title">Афиша кино</h1>
     <div class="list__container">
-      <div
-        class="list__item"
-        v-for="film in props.list"
-        :key="film.name"
-        @click.prevent="getId(film.id)"
-      >
-        <div class="item">
-          <div class="item__picture">
-            <a
-              href=""
-              class="item__picture-image"
-              :style="`background-image: url(${film.imgTitle})`"
-            ></a>
-            <span class="item__picture-age-limit">{{ `${film.ageLimit}+` }}</span>
-          </div>
-          <div class="item__container">
-            <h5 class="item__title">{{ film.name }}</h5>
-            <div class="item__genres">{{ joinGenres(film.genres) }}</div>
-          </div>
-        </div>
-      </div>
+      <ListItem
+        v-for="item in props.list"
+        :key="item.id"
+        :name="item.name"
+        :age-limit="item.ageLimit"
+        :genres="item.genres"
+        :img-src="item.imgTitle"
+        @click.prevent="getId(item.id)"
+      />
     </div>
   </div>
 </template>
@@ -84,54 +72,6 @@ const imgList: { src: string; alt: string }[] = [
     padding: 20px;
     flex: 0 0 50%;
     cursor: pointer;
-  }
-}
-
-.item {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-
-  &__picture {
-    position: relative;
-
-    &-image {
-      height: 354px;
-      width: 275px;
-      display: block;
-      background-position: 50%;
-      background-repeat: no-repeat;
-      background-size: cover;
-      border-radius: 0.6rem;
-      transition: transform 0.5s;
-
-      &:hover {
-        transform: scale(1.03);
-      }
-    }
-
-    &-age-limit {
-      position: absolute;
-      top: 5%;
-      left: 5%;
-      color: var(--primary-white);
-      background-color: var(--secondary-icon);
-      padding: 0.2rem;
-    }
-  }
-
-  &__container {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-  }
-
-  &__title {
-    font-size: 28px;
-  }
-
-  &__genres {
-    margin-top: 15px;
-    font-size: 16px;
   }
 }
 </style>
