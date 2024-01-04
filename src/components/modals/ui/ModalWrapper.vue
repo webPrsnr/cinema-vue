@@ -15,7 +15,7 @@ const isText = (text: ModalProps['text']) => (typeof text === 'string' ? true : 
     <p v-if="isText(text)">
       {{ text }}
     </p>
-    <component v-else :is="text" />
+    <component :is="text" v-else />
     <ModalFooter v-if="accept" :click-handler="accept" />
   </div>
 </template>

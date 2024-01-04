@@ -15,7 +15,7 @@ onMounted(() => {
 </script>
 
 <template>
-  <div class="seats" ref="element">
+  <div ref="element" class="seats">
     <AppSpinner v-if="!currentState()" />
     <slot v-else />
   </div>

@@ -57,17 +57,17 @@ const moveBackHandler = () => {
     <div class="chairs__wrapper">
       <SeatsChairs
         :chairs="props.seats.totalSeats"
-        :reservedGuest="res"
-        :reservedClient="reserveSeats"
+        :reserved-guest="res"
+        :reserved-client="reserveSeats"
         @click-handler="clickHandler"
         @remove-handler="removeHandler"
       />
       <SeatsOrder
         :seats="reserveSeats"
-        @remove-order="removeHandler"
-        @clear-handler="clearHandler"
         :date="date"
         :time="seats.time"
+        @remove-order="removeHandler"
+        @clear-handler="clearHandler"
       />
     </div>
     <SeatsFaq />

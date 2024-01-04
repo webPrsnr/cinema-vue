@@ -25,12 +25,12 @@ const clickHandler = (chair: number) => {
 <template>
   <div class="seats__chairs">
     <div
-      type="button"
-      class="seats__chair"
       v-for="chair in props.chairs"
       :key="chair"
-      :class="{ faq__circle_red: isReservedGuest(chair), faq__reserved: isRevervedClient(chair) }"
       v-tooltip.top="chair"
+      type="button"
+      class="seats__chair"
+      :class="{ faq__circle_red: isReservedGuest(chair), faq__reserved: isRevervedClient(chair) }"
       @click="clickHandler(chair)"
     ></div>
   </div>

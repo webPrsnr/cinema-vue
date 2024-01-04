@@ -5,7 +5,7 @@ import { modal } from '@/composable/useModal'
 <template>
   <Teleport to="body">
     <Transition name="modal-fade">
-      <div class="modal-wrapper" @click.self="modal.close" v-if="modal.state.value.component">
+      <div v-if="modal.state.value.component" class="modal-wrapper" @click.self="modal.close">
         <component :is="modal.state.value.component" v-bind="modal.state.value.props" />
       </div>
     </Transition>

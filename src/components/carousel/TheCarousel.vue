@@ -57,7 +57,7 @@ onUnmounted(() => {
 </script>
 
 <template>
-  <div class="carousel" ref="itemsTemplate">
+  <div ref="itemsTemplate" class="carousel">
     <div class="carousel__wrapper">
       <ol class="carousel__items" :style="`transform: translateX(${initTransform}px)`">
         <li v-for="item in srcList" :key="item.src" class="carousel__item">

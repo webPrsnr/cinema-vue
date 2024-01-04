@@ -65,11 +65,11 @@ const isTimeExpired = (initialTime: string, date: number) => {
     </AppHeading>
     <div class="scroll">
       <template v-for="(date, index) in props.dates" :key="index">
-        <section class="session" v-if="isDateExpired(date.date)">
+        <section v-if="isDateExpired(date.date)" class="session">
           <h2 class="session__time">{{ new Date(date.date).toLocaleDateString() }}</h2>
           <div class="times">
             <template v-for="sess in date.session" :key="sess.time">
-              <section class="time" v-if="isTimeExpired(sess.time, date.date)">
+              <section v-if="isTimeExpired(sess.time, date.date)" class="time">
                 <h3
                   class="time__title"
                   @click="chooseSession(sess.time, new Date(date.date).getTime())"

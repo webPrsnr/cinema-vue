@@ -84,15 +84,15 @@ const listPageHandler = () => {
               :start-show="card.start"
             />
           </CardBody>
-          <FilmSeans @choose-time="chooseTimeHandler" :dates="props.card.dates" />
+          <FilmSeans :dates="props.card.dates" @choose-time="chooseTimeHandler" />
         </div>
         <SpinnerWrapper v-if="currentState()">
           <FilmSeats
             v-if="seats"
+            :id="card.id"
             :seats="setSeats"
             :date="seats.clickedDate"
-            :id="card.id"
-            @moveBackHandler="moveBackHandler"
+            @move-back-handler="moveBackHandler"
           />
         </SpinnerWrapper>
       </div>

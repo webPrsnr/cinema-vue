@@ -37,10 +37,10 @@ const clickHandler = () => {
     </AppHeading>
     <section class="order">
       <div class="order__wrapper">
-        <div class="order__elem" v-if="!props.seats.length">
+        <div v-if="!props.seats.length" class="order__elem">
           <div class="elem__description">Выберите желаемое место</div>
         </div>
-        <div class="order__elem" v-for="seat in props.seats" :key="seat">
+        <div v-for="seat in props.seats" :key="seat" class="order__elem">
           <div class="elem__description">{{ seat }} место</div>
           <button type="button" class="elem__delete" @click="emit('removeOrder', seat)">
             <IconDelete class="elem__icon-delete" />
