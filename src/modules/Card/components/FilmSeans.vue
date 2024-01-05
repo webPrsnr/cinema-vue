@@ -15,47 +15,28 @@ const chooseSession = (time: string, date: number) => {
 }
 
 const isDateExpired = (date: number) => {
-  const currentDate = new Date()
-  const [currentDay, currentMonth, currentYear] = [
-    currentDate.getDate(),
-    currentDate.getMonth(),
-    currentDate.getFullYear()
-  ]
-  const initialDate = new Date(date)
-  const [initialDay, inititalMonth, initialYear] = [
-    initialDate.getDate(),
-    initialDate.getMonth(),
-    initialDate.getFullYear()
-  ]
-  const result =
-    currentYear > initialYear
-      ? false
-      : currentMonth > inititalMonth
-      ? false
-      : currentDay > initialDay
-      ? false
-      : true
-  return result
+  const [currentDate, currentMonth] = [new Date().getDate(), new Date().getMonth()]
+  const [initialDate, initialMonth] = [new Date(date).getDate(), new Date(date).getMonth()]
+
+  if (currentMonth === initialMonth) {
+    if (currentDate <= initialDate) return true
+  }
+  return false
 }
 
 const isTimeExpired = (initialTime: string, date: number) => {
-  const currentTime = new Date()
-  const initialDate = new Date(date)
-  const [initialDay, inititalMonth] = [initialDate.getDay(), initialDate.getMonth()]
-  const [min, hour, currentDay, currentMonth] = [
-    currentTime.getMinutes(),
-    currentTime.getHours(),
-    currentTime.getDay(),
-    currentTime.getMonth()
-  ]
+  const currentDate = new Date().getDate()
+  const initialDate = new Date(date).getDate()
+  const currentHour = new Date().getHours()
 
-  const convertedTime = `${hour}.${min}`
+  if (currentDate === initialDate) {
+    if (currentHour >= parseInt(initialTime)) {
+      console.log('init')
 
-  const result =
-    currentMonth === inititalMonth && currentDay === initialDay && convertedTime >= initialTime
-      ? false
-      : true
-  return result
+      return false
+    }
+  }
+  return true
 }
 </script>
 <template>
@@ -68,13 +49,13 @@ const isTimeExpired = (initialTime: string, date: number) => {
         <section v-if="isDateExpired(date.date)" class="session">
           <h2 class="session__time">{{ new Date(date.date).toLocaleDateString() }}</h2>
           <div class="times">
-            <template v-for="sess in date.session" :key="sess.time">
-              <section v-if="isTimeExpired(sess.time, date.date)" class="time">
+            <template v-for="session in date.session" :key="session.time">
+              <section v-if="isTimeExpired(session.time, date.date)" class="time">
                 <h3
                   class="time__title"
-                  @click="chooseSession(sess.time, new Date(date.date).getTime())"
+                  @click="chooseSession(session.time, new Date(date.date).getTime())"
                 >
-                  {{ sess.time }}
+                  {{ session.time }}
                 </h3>
               </section>
             </template>
