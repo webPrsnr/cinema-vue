@@ -1,11 +1,12 @@
 <script setup lang="ts">
+import { getImageUrl } from '@/utils/setImages'
 defineProps<{
   imgSrc: string
 }>()
 </script>
 <template>
   <section class="card__poster">
-    <div class="card__poster-image" :style="`background-image:url(${imgSrc})`"></div>
+    <div class="card__poster-image" :style="`background-image:url(${getImageUrl(imgSrc)})`"></div>
   </section>
 </template>
 

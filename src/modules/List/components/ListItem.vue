@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { joinGenres } from '@/utils/joinGenres'
+import { getImageUrl } from '@/utils/setImages'
 defineProps<{
   imgSrc: string
   ageLimit: number
@@ -12,7 +13,11 @@ defineProps<{
   <div class="item-container">
     <div class="item">
       <div class="item__picture">
-        <a href="" class="item__picture-image" :style="`background-image: url(${imgSrc})`"></a>
+        <a
+          href=""
+          class="item__picture-image"
+          :style="`background-image: url(${getImageUrl(imgSrc)})`"
+        ></a>
         <span class="item__picture-age-limit">{{ `${ageLimit}+` }}</span>
       </div>
       <div class="item__container">
