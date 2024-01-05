@@ -81,7 +81,7 @@ const listPageHandler = () => {
               :description="card.description"
               :director="card.director"
               :starring="card.starring"
-              :start-show="card.start"
+              :start-show="new Date(card.start)"
             />
           </CardBody>
           <FilmSeans :dates="props.card.dates" @choose-time="chooseTimeHandler" />
