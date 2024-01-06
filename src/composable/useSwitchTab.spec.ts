@@ -1,7 +1,7 @@
 import { describe, it, expect } from 'vitest'
 import { useSwitchTab } from './useSwitchTab'
 import { ref } from 'vue'
-import { list } from '@/listFilms'
+import list from '@/data.json'
 
 describe('test useSwitchTab hook', () => {
   it('currentTab is true on call', () => {

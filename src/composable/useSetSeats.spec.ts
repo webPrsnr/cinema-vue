@@ -1,4 +1,4 @@
-import { list } from '@/listFilms'
+import list from '@/data.json'
 import { describe, it, expect } from 'vitest'
 import { useSetSeats } from './useSetSeats'
 
