@@ -12,7 +12,7 @@
 @font-face {
     font-family: "Rubik Bold";
     font-weight: 700;
-    src: url("../public/Rubik-Bold.woff") format("woff");
+    src: url("/Rubik-Bold.woff") format("woff");
 }
 
 body {
