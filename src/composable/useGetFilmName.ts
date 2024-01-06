@@ -1,4 +1,4 @@
-import { list } from '@/listFilms'
+import list from '@/data.json'
 
 export const useGetFilmName = (id: number) => {
   //JSON в будущем
