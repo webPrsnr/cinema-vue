@@ -16,41 +16,41 @@ const acceptHandler = () => {
 </script>
 
 <template>
-  <div class="footer-wrapper">
-    <button class="footer-btn footer-btn--close" @click="closeHandler">Отмена</button>
-    <button class="footer-btn footer-btn--accept" @click="acceptHandler">Сохранить</button>
+  <div class="footer">
+    <button class="footer__btn footer__btn--close" @click="closeHandler">Отмена</button>
+    <button class="footer__btn footer__btn--accept" @click="acceptHandler">Сохранить</button>
   </div>
 </template>
 
 <style scoped>
-.footer-wrapper {
+.footer {
   display: flex;
   flex-direction: row-reverse;
   gap: 1rem;
-}
 
-.footer-btn {
-  cursor: pointer;
-  border-radius: 0.25rem;
-  line-height: 1.5;
-  padding: 0.375rem 0.75rem;
-  font-size: 1rem;
+  &__btn {
+    cursor: pointer;
+    border-radius: 0.25rem;
+    line-height: 1.5;
+    padding: 0.375rem 0.75rem;
+    font-size: 1rem;
 
-  &--close {
-    background-color: var(--seat-reserved-other);
-    color: var(--primary-white);
+    &--close {
+      background-color: var(--seat-reserved-other);
+      color: var(--primary-white);
 
-    &:hover {
-      background-color: rgba(115 115 115 / 50%);
+      &:hover {
+        background-color: rgba(115 115 115 / 50%);
+      }
     }
-  }
 
-  &--accept {
-    background-color: var(--secondary-icon);
-    color: var(--primary-white);
+    &--accept {
+      background-color: var(--secondary-icon);
+      color: var(--primary-white);
 
-    &:hover {
-      background-color: #2fca85;
+      &:hover {
+        background-color: #2fca85;
+      }
     }
   }
 }

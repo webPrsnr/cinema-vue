@@ -65,10 +65,10 @@ const listPageHandler = () => {
 </script>
 <template>
   <section>
-    <div class="container">
+    <div class="card container">
       <CardHeader @list-page-handler="listPageHandler" />
-      <div class="card">
-        <div class="card__wrapper">
+      <div>
+        <div class="card__container">
           <CardPoster :img-src="card.imgTitle" />
           <CardBody
             :age-limit="card.ageLimit"
@@ -100,15 +100,11 @@ const listPageHandler = () => {
   </section>
 </template>
 <style scoped>
-.container {
+.card {
   max-width: 1299px;
   padding: 0 6px;
-  margin: 0 auto;
-  width: 100%;
-}
 
-.card {
-  &__wrapper {
+  &__container {
     display: grid;
     grid-template-columns: max-content 2fr 1fr;
     grid-column-gap: 0.5rem;

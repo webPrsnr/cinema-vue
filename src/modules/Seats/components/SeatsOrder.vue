@@ -35,19 +35,19 @@ const clickHandler = () => {
     <AppHeading title="Выбранные места">
       <HeadIcon class="head-icon" />
     </AppHeading>
-    <section class="order">
-      <div class="order__wrapper">
-        <div v-if="!props.seats.length" class="order__elem">
-          <div class="elem__description">Выберите желаемое место</div>
+    <section class="seats-order">
+      <div class="seats-order__wrapper">
+        <div v-if="!props.seats.length" class="seats-order__elem">
+          <div class="seats-order__description">Выберите желаемое место</div>
         </div>
-        <div v-for="seat in props.seats" :key="seat" class="order__elem">
-          <div class="elem__description">{{ seat }} место</div>
-          <button type="button" class="elem__delete" @click="emit('removeOrder', seat)">
-            <IconDelete class="elem__icon-delete" />
+        <div v-for="seat in props.seats" :key="seat" class="seats-order__elem">
+          <div class="seats-order__description">{{ seat }} место</div>
+          <button type="button" class="seats-order__delete" @click="emit('removeOrder', seat)">
+            <IconDelete class="seats-order__icon-delete" />
           </button>
         </div>
       </div>
-      <button class="order__buy" :disabled="!props.seats.length" @click="clickHandler">
+      <button class="seats-order__buy" :disabled="!props.seats.length" @click="clickHandler">
         Далее
       </button>
     </section>
@@ -55,7 +55,7 @@ const clickHandler = () => {
 </template>
 
 <style>
-.order {
+.seats-order {
   padding-right: 1rem;
   display: flex;
   flex-direction: column;
@@ -114,19 +114,6 @@ const clickHandler = () => {
     background-color: var(--disabled-btn);
     color: var(--primary-icon);
   }
-}
-
-.head-icon {
-  width: 25px;
-  height: 25px;
-  fill: var(--primary-white);
-}
-
-.elem {
-  &__description {
-    flex: 1;
-    font-size: 17px;
-  }
 
   &__delete {
     fill: var(--primary-icon);
@@ -140,6 +127,11 @@ const clickHandler = () => {
     fill: inherit;
     width: 18px;
     height: 18px;
+  }
+
+  &__description {
+    flex: 1;
+    font-size: 17px;
   }
 }
 </style>

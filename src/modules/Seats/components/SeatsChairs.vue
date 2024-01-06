@@ -23,29 +23,30 @@ const clickHandler = (chair: number) => {
 </script>
 
 <template>
-  <div class="seats__chairs">
+  <div class="seats-chairs">
     <div
       v-for="chair in props.chairs"
       :key="chair"
       v-tooltip.top="chair"
       type="button"
-      class="seats__chair"
-      :class="{ faq__circle_red: isReservedGuest(chair), faq__reserved: isRevervedClient(chair) }"
+      class="seats-chairs__chair"
+      :class="{
+        'seats-chairs__reserved-guest': isReservedGuest(chair),
+        'seats-chairs__reserved-client': isRevervedClient(chair)
+      }"
       @click="clickHandler(chair)"
     ></div>
   </div>
 </template>
 
 <style scoped>
-.seats {
-  &__chairs {
-    border-radius: 0.5rem;
-    display: grid;
-    gap: 1.5rem;
-    justify-content: center;
-    grid-template-columns: repeat(8, 1rem);
-    margin-bottom: 0.5rem;
-  }
+.seats-chairs {
+  border-radius: 0.5rem;
+  display: grid;
+  gap: 1.5rem;
+  justify-content: center;
+  grid-template-columns: repeat(8, 1rem);
+  margin-bottom: 0.5rem;
 
   &__chair {
     padding: 1rem;
@@ -56,14 +57,12 @@ const clickHandler = (chair: number) => {
       rgba(0 0 0 / 5%) 0 6px 24px 0,
       rgba(0 0 0 / 8%) 0 0 0 1px;
   }
-}
 
-.faq {
-  &__reserved {
+  &__reserved-client {
     background-color: var(--seat-reserved-client);
   }
 
-  &__circle_red {
+  &__reserved-guest {
     background-color: var(--seat-reserved-other);
     cursor: not-allowed;
     pointer-events: none;

@@ -10,33 +10,33 @@ defineProps<{
 </script>
 
 <template>
-  <div class="item-container">
-    <div class="item">
-      <div class="item__picture">
+  <div class="list-item">
+    <div class="list-item__container">
+      <div class="list-item__picture">
         <a
           href=""
-          class="item__picture-image"
+          class="list-item__picture-image image-settings"
           :style="`background-image: url(${getImageUrl(imgSrc)})`"
         ></a>
-        <span class="item__picture-age-limit">{{ `${ageLimit}+` }}</span>
+        <span class="list-item__picture-age-limit">{{ `${ageLimit}+` }}</span>
       </div>
-      <div class="item__container">
-        <h5 class="item__title">{{ name }}</h5>
-        <div class="item__genres">{{ joinGenres(genres) }}</div>
+      <div class="list-item__info">
+        <h5 class="list-item__info-title">{{ name }}</h5>
+        <div class="list-item__info-genres">{{ joinGenres(genres) }}</div>
       </div>
     </div>
   </div>
 </template>
 
 <style scoped>
-.item {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
+.list-item {
+  padding: 20px;
+  flex: 0 0 50%;
+  cursor: pointer;
 
-  &-container {
-    padding: 20px;
-    flex: 0 0 50%;
-    cursor: pointer;
+  &__container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
   }
 
   &__picture {
@@ -45,11 +45,6 @@ defineProps<{
     &-image {
       height: 354px;
       width: 275px;
-      display: block;
-      background-position: 50%;
-      background-repeat: no-repeat;
-      background-size: cover;
-      border-radius: 0.6rem;
       transition: transform 0.5s;
 
       &:hover {
@@ -67,19 +62,19 @@ defineProps<{
     }
   }
 
-  &__container {
+  &__info {
     display: flex;
     flex-direction: column;
     justify-content: center;
-  }
 
-  &__title {
-    font-size: 28px;
-  }
+    &-title {
+      font-size: 28px;
+    }
 
-  &__genres {
-    margin-top: 15px;
-    font-size: 16px;
+    &-genres {
+      margin-top: 15px;
+      font-size: 16px;
+    }
   }
 }
 </style>

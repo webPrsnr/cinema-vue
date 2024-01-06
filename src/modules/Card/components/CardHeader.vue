@@ -9,9 +9,14 @@ defineEmits<{
 }>()
 </script>
 <template>
-  <div class="top">
-    <BackBtn title="К списку" position="left" class="top__btn" @click="$emit('listPageHandler')">
-      <ListIcon class="list-icon" />
+  <div class="card-header">
+    <BackBtn
+      title="К списку"
+      position="left"
+      class="card-header__btn"
+      @click="$emit('listPageHandler')"
+    >
+      <ListIcon class="back-icon" />
     </BackBtn>
     <AppHeading title="Подробнее о фильме">
       <FAQ class="head-icon" />
@@ -20,24 +25,12 @@ defineEmits<{
 </template>
 
 <style scoped>
-.top {
+.card-header {
   margin-top: 3.5rem;
   position: relative;
 
   &__btn {
     right: 1%;
   }
-}
-
-.list-icon {
-  width: 18px;
-  height: 18px;
-  fill: var(--primary-icon);
-}
-
-.head-icon {
-  width: 25px;
-  height: 25px;
-  fill: var(--primary-white);
 }
 </style>

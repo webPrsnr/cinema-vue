@@ -1,5 +1,5 @@
 <template>
-  <ul class="faq__wrapper">
+  <ul class="faq">
     <li class="faq__element">Это одностраничное приложение резервирования билетов в кинотеатр.</li>
     <li class="faq__element">
       Время начала сеансов 10.00, время последнего сеанса 20.00. Шаг 2 часа. Всего 6 сеансов в день.
@@ -16,17 +16,15 @@
 
 <style scoped>
 .faq {
-  &__wrapper {
-    list-style-type: disc;
-    padding-left: 1rem;
-  }
+  list-style-type: disc;
+  padding-left: 1rem;
 
   &__element {
     padding: 0.2rem 0;
-  }
 
-  &__element::marker {
-    color: var(--primary-danger);
+    &::marker {
+      color: var(--primary-danger);
+    }
   }
 }
 </style>

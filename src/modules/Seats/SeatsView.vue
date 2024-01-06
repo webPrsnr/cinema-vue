@@ -49,12 +49,12 @@ const moveBackHandler = () => {
 }
 </script>
 <template>
-  <section class="seats__wrapper">
+  <section class="seats">
     <SeatsTime :time="props.seats.time" :date="props.date" />
-    <BackBtn title="Назад" position="right" class="back-btn" @click="moveBackHandler">
-      <ArrowUp class="arrow-icon" />
+    <BackBtn title="Назад" position="right" class="seats__back-btn" @click="moveBackHandler">
+      <ArrowUp class="back-icon" />
     </BackBtn>
-    <div class="chairs__wrapper">
+    <div class="seats__container">
       <SeatsChairs
         :chairs="props.seats.totalSeats"
         :reserved-guest="res"
@@ -76,32 +76,18 @@ const moveBackHandler = () => {
 
 <style scoped>
 .seats {
-  &__wrapper {
-    background-color: rgb(247 248 250);
-    height: 100vh;
-    border: var(--primary-border);
-    border-radius: 1rem;
-    position: relative;
+  background-color: rgb(247 248 250);
+  height: 100vh;
+  border: var(--primary-border);
+  border-radius: 1rem;
+  position: relative;
+
+  &__back-btn {
+    left: 1rem;
+    top: 5rem;
   }
 
-  &__title {
-    padding: 2.5rem;
-  }
-}
-
-.back-btn {
-  left: 1rem;
-  top: 5rem;
-}
-
-.arrow-icon {
-  width: 18px;
-  height: 18px;
-  stroke: var(--primary-icon);
-}
-
-.chairs {
-  &__wrapper {
+  &__container {
     display: grid;
     grid-template-columns: 3fr 1fr;
     justify-content: center;

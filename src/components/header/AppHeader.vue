@@ -51,12 +51,12 @@ const clickArchiveHandle = () => {
 </script>
 <template>
   <header ref="headerElement" class="header" :class="{ scroll: isTopPage }">
-    <div class="container">
-      <div class="wrapper">
-        <h2 class="wrapper__title" :class="{ 'wrapper__title-scroll': isTopPage }">в-синема</h2>
-        <div class="wrapper__links">
-          <a class="wrapper__link" href="" @click.prevent="clickFAQHandle">FAQ</a>
-          <a class="wrapper__link" href="" @click.prevent="clickArchiveHandle">Архив</a>
+    <div class="header__container container">
+      <div class="header__wrapper">
+        <h2 class="header__title" :class="{ 'header__title-scroll': isTopPage }">в-синема</h2>
+        <div class="header__links">
+          <a class="header__link" href="" @click.prevent="clickFAQHandle">FAQ</a>
+          <a class="header__link" href="" @click.prevent="clickArchiveHandle">Архив</a>
         </div>
       </div>
     </div>
@@ -64,22 +64,37 @@ const clickArchiveHandle = () => {
 </template>
 
 <style scoped>
-.wrapper {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+.header {
+  padding: 10px 16px;
+  background-color: rgba(0 0 0 / 8%);
+  z-index: 10;
+  position: fixed;
+  width: 100%;
+  top: 0;
+  left: 0;
+
+  &__container {
+    max-width: 1200px;
+    padding: 0 20px;
+  }
+
+  &__wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
 
   &__title {
     text-transform: uppercase;
     font-size: 1.25rem;
     letter-spacing: 0.15rem;
     color: var(--primary-white);
+  }
 
-    &-scroll {
-      background: linear-gradient(to right, var(--secondary-icon) 0%, var(--thirdy-icon) 100%);
-      background-clip: text;
-      -webkit-text-fill-color: transparent;
-    }
+  &__title-scroll {
+    background: linear-gradient(to right, var(--secondary-icon) 0%, var(--thirdy-icon) 100%);
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
   }
 
   &__links {
@@ -98,23 +113,6 @@ const clickArchiveHandle = () => {
       border-radius: 4px;
     }
   }
-}
-
-.container {
-  max-width: 1200px;
-  margin: 0 auto;
-  width: 100%;
-  padding: 0 20px;
-}
-
-.header {
-  padding: 10px 16px;
-  background-color: rgba(0 0 0 / 8%);
-  z-index: 10;
-  position: fixed;
-  width: 100%;
-  top: 0;
-  left: 0;
 }
 
 .scroll {

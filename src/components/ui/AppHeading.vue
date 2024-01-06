@@ -7,7 +7,7 @@ defineProps<{
 <template>
   <div class="heading">
     <div class="heading__wrapper">
-      <div class="circle">
+      <div class="heading__circle">
         <slot></slot>
       </div>
       <h1>{{ title }}</h1>
@@ -29,15 +29,15 @@ defineProps<{
     gap: 0.5rem;
     align-items: center;
   }
-}
 
-.circle {
-  width: 35px;
-  height: 35px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: var(--secondary-icon);
-  border-radius: 9999px;
+  &__circle {
+    width: 35px;
+    height: 35px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--secondary-icon);
+    border-radius: 9999px;
+  }
 }
 </style>

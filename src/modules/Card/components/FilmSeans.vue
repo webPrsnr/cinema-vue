@@ -40,19 +40,22 @@ const isTimeExpired = (initialTime: string, date: number) => {
 }
 </script>
 <template>
-  <section class="session__wrapper">
+  <section>
     <AppHeading title="Все сеансы">
       <Time class="head-icon" />
     </AppHeading>
-    <div class="scroll">
+    <div class="film-seans">
       <template v-for="(date, index) in props.dates" :key="index">
-        <section v-if="isDateExpired(date.date)" class="session">
-          <h2 class="session__time">{{ new Date(date.date).toLocaleDateString() }}</h2>
-          <div class="times">
+        <section v-if="isDateExpired(date.date)" class="film-seans__session">
+          <h2 class="film-seans__time">{{ new Date(date.date).toLocaleDateString() }}</h2>
+          <div class="film-seans__container">
             <template v-for="session in date.session" :key="session.time">
-              <section v-if="isTimeExpired(session.time, date.date)" class="time">
+              <section
+                v-if="isTimeExpired(session.time, date.date)"
+                class="film-seans__available-container"
+              >
                 <h3
-                  class="time__title"
+                  class="film-seans__available-title"
                   @click="chooseSession(session.time, new Date(date.date).getTime())"
                 >
                   {{ session.time }}
@@ -67,53 +70,38 @@ const isTimeExpired = (initialTime: string, date: number) => {
 </template>
 
 <style scoped>
-.session {
-  border: var(--primary-border);
-  border-radius: 1rem;
-  margin: 0.5rem 0;
+.film-seans {
+  height: 24rem;
+  overflow: auto;
 
-  &:first-child {
-    margin-top: 0;
+  &__session {
+    border: var(--primary-border);
+    border-radius: 1rem;
+    margin: 0.5rem 0;
+
+    &:first-child {
+      margin-top: 0;
+    }
   }
 
   &__time {
     padding: 0.7rem 0 0.7rem 1rem;
   }
-}
 
-.scroll {
-  height: 24rem;
-  overflow: auto;
-}
+  &__container {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 8px;
+    padding: 5px 8px;
+    cursor: pointer;
+  }
 
-.head-icon {
-  width: 25px;
-  height: 25px;
-  fill: var(--primary-white);
-}
+  &__available-container {
+    padding: 0.8rem;
+    box-shadow: var(--primary-shadow);
+  }
 
-::-webkit-scrollbar {
-  width: 10px;
-}
-
-::-webkit-scrollbar-thumb {
-  background: rgba(0 0 0 / 20%);
-  border-radius: 0.5rem;
-}
-
-.times {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-  padding: 5px 15px;
-  cursor: pointer;
-}
-
-.time {
-  padding: 0.8rem;
-  box-shadow: var(--primary-shadow);
-
-  &__title {
+  &__available-title {
     line-height: 32px;
     font-size: 26px;
   }

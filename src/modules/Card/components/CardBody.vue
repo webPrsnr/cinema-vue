@@ -11,15 +11,15 @@ defineProps<{
 </script>
 
 <template>
-  <section class="card__main">
-    <h1 class="card__title">«{{ name }}»</h1>
-    <div class="card__info">
+  <section class="card-body">
+    <h1 class="card-body__title">«{{ name }}»</h1>
+    <div class="card-body__info">
       <span>{{ country }}</span
       >,&nbsp;<span>{{ converToHour(duration) }}</span>
       <div>{{ joinGenres(genres) }}</div>
-      <div class="card__age">
-        <div class="card__limit">
-          <div class="card__sign">{{ ageLimit }}+</div>
+      <div class="card-body__age">
+        <div class="card-body__limit">
+          <div class="card-body__sign">{{ ageLimit }}+</div>
         </div>
       </div>
     </div>
@@ -29,13 +29,7 @@ defineProps<{
 </template>
 
 <style scoped>
-.card {
-  &__wrapper {
-    display: grid;
-    grid-template-columns: max-content 2fr 1fr;
-    grid-column-gap: 0.5rem;
-  }
-
+.card-body {
   &__title {
     font-size: 32px;
     margin-bottom: 1rem;

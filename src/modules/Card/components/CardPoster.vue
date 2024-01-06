@@ -5,21 +5,19 @@ defineProps<{
 }>()
 </script>
 <template>
-  <section class="card__poster">
-    <div class="card__poster-image" :style="`background-image:url(${getImageUrl(imgSrc)})`"></div>
+  <section class="card-poster">
+    <div
+      class="card-poster__image image-settings"
+      :style="`background-image:url(${getImageUrl(imgSrc)})`"
+    ></div>
   </section>
 </template>
 
 <style scoped>
-.card {
-  &__poster-image {
+.card-poster {
+  &__image {
     width: 280px;
     height: 420px;
-    background-repeat: no-repeat;
-    background-size: cover;
-    overflow: hidden;
-    background-position: center;
-    border-radius: 0.6rem;
   }
 }
 </style>

@@ -36,7 +36,7 @@ const imgList: { src: string; alt: string }[] = [
 </script>
 <template>
   <TheCarousel :src-list="imgList" />
-  <div class="list">
+  <div class="list container">
     <h1 class="list__title">Афиша кино</h1>
     <div class="list__container">
       <ListItem
@@ -55,8 +55,6 @@ const imgList: { src: string; alt: string }[] = [
 .list {
   max-width: 1292px;
   padding: 0 20px;
-  margin: 0 auto;
-  width: 100%;
 
   &__title {
     font-size: 32px;
