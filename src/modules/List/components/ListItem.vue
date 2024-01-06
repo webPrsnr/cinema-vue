@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import AgeLimit from '@/components/ui/AgeLimit.vue'
 import { joinGenres } from '@/utils/joinGenres'
 import { getImageUrl } from '@/utils/setImages'
 defineProps<{
@@ -18,7 +19,7 @@ defineProps<{
           class="list-item__picture-image image-settings"
           :style="`background-image: url(${getImageUrl(imgSrc)})`"
         ></a>
-        <span class="list-item__picture-age-limit">{{ `${ageLimit}+` }}</span>
+        <AgeLimit class="list-item__picture-age-limit" :limit="ageLimit" :location="'list'" />
       </div>
       <div class="list-item__info">
         <h5 class="list-item__info-title">{{ name }}</h5>
@@ -56,9 +57,6 @@ defineProps<{
       position: absolute;
       top: 5%;
       left: 5%;
-      color: var(--primary-white);
-      background-color: var(--secondary-icon);
-      padding: 0.2rem;
     }
   }
 

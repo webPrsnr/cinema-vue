@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import AgeLimit from '@/components/ui/AgeLimit.vue'
 import { converToHour } from '@/utils/convertToHour'
 import { joinGenres } from '@/utils/joinGenres'
 defineProps<{
@@ -19,7 +20,7 @@ defineProps<{
       <div>{{ joinGenres(genres) }}</div>
       <div class="card-body__age">
         <div class="card-body__limit">
-          <div class="card-body__sign">{{ ageLimit }}+</div>
+          <AgeLimit :limit="ageLimit" :location="'card'" />
         </div>
       </div>
     </div>
