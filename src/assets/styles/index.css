@@ -5,8 +5,14 @@
     font-family: "SB Sans";
     font-weight: 100 800;
     font-stretch: 75% 112.5%;
-    src: url("../public/SBSansInterface.woff2") format("woff2");
+    src: url("/SBSansInterface.woff2") format("woff2");
     font-display: swap;
+}
+
+@font-face {
+    font-family: "Rubik Bold";
+    font-weight: 700;
+    src: url("../public/Rubik-Bold.woff") format("woff");
 }
 
 body {

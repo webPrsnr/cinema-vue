@@ -86,6 +86,7 @@ const clickArchiveHandle = () => {
 
   &__title {
     text-transform: uppercase;
+    font-family: 'Rubik Bold', sans-serif;
     font-size: 1.25rem;
     letter-spacing: 0.15rem;
     color: var(--primary-white);
