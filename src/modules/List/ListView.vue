@@ -6,6 +6,7 @@ import TheCarousel from '@/components/carousel/TheCarousel.vue'
 import { useHead } from '@unhead/vue'
 import { metaList } from '@/utils/metaTags'
 import ListItem from './components/ListItem.vue'
+import ListFooter from './components/ListFooter.vue'
 
 interface FilmInfoProps {
   list: FilmInfo[]
@@ -28,10 +29,9 @@ const getId = (id: number) => {
 }
 
 const imgList: { src: string; alt: string }[] = [
-  { src: '4849606', alt: 'carousel_img_1' },
-  { src: '4849616', alt: 'carousel_img_2' },
-  { src: '4849635', alt: 'carousel_img_3' },
-  { src: '4849670', alt: 'carousel__img_4' }
+  { src: 'car1', alt: 'carousel_img_1' },
+  { src: 'car2', alt: 'carousel_img_2' },
+  { src: 'car3', alt: 'carousel_img_3' }
 ]
 </script>
 <template>
@@ -49,6 +49,7 @@ const imgList: { src: string; alt: string }[] = [
         @click.prevent="getId(item.id)"
       />
     </div>
+    <ListFooter />
   </div>
 </template>
 <style scoped>
