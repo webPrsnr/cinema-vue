@@ -71,7 +71,7 @@ const isTimeExpired = (initialTime: string, date: number) => {
 
 <style scoped>
 .film-seans {
-  height: 24rem;
+  height: 22rem;
   overflow: auto;
 
   &__session {
