@@ -1,52 +1,43 @@
 # cinema-tracker
 
-This template should help get you started developing with Vue 3 in Vite.
+Одностраничное приложение резервирование билетов в кинотеатр:
 
-## Recommended IDE Setup
+- на каждый фильм выделено 3 дня премьеры;
+- каждый день состоит из 6 сеансов (от 10:00 до 20:00, шаг - каждые 2 часа);
+- интерфейс отображает доступные даты для бронирования, сеансы для выбраной даты, свободные и забронированные места;
+- даты и сеансы меньше текущего времени и даты (считай просмотра страницы) не отображаются;
+- присутствует архив, где отображаются выбранные сеансы клиента;
+- для хранения дат и отмеченных пользователем сеансов используется localStorage;
+- в качестве модели данных используется файл JSON формата, который автоматически обновляется раз в три дня (github actions);
+- деплоится через отдельную ветку на vercel.
 
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur) + [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin).
+## Технологии
 
-## Type Support for `.vue` Imports in TS
+- [Vue3](https://vuejs.org/), TypeScript
+- PostCSS, stylelint
+- [Unhead](https://unhead.unjs.io/)
+- vercel hosting
 
-TypeScript cannot handle type information for `.vue` imports by default, so we replace the `tsc` CLI with `vue-tsc` for type checking. In editors, we need [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin) to make the TypeScript language service aware of `.vue` types.
+## Запуск
 
-If the standalone TypeScript plugin doesn't feel fast enough to you, Volar has also implemented a [Take Over Mode](https://github.com/johnsoncodehk/volar/discussions/471#discussioncomment-1361669) that is more performant. You can enable it by the following steps:
-
-1. Disable the built-in TypeScript Extension
-    1) Run `Extensions: Show Built-in Extensions` from VSCode's command palette
-    2) Find `TypeScript and JavaScript Language Features`, right click and select `Disable (Workspace)`
-2. Reload the VSCode window by running `Developer: Reload Window` from the command palette.
-
-## Customize configuration
-
-See [Vite Configuration Reference](https://vitejs.dev/config/).
-
-## Project Setup
+Установка зависимостей:
 
 ```sh
-yarn
+yarn install
 ```
 
-### Compile and Hot-Reload for Development
+Запуск приложения в development режиме:
 
 ```sh
 yarn dev
 ```
 
-### Type-Check, Compile and Minify for Production
+## Тестирование
 
-```sh
-yarn build
-```
+Для тестирования используется `vitest`, `@vue/test-utils`.
 
-### Run Unit Tests with [Vitest](https://vitest.dev/)
+Запуск тестов:
 
 ```sh
 yarn test:unit
-```
-
-### Lint with [ESLint](https://eslint.org/)
-
-```sh
-yarn lint
 ```
