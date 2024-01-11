@@ -69,8 +69,9 @@ const listPageHandler = () => {
       <CardHeader @list-page-handler="listPageHandler" />
       <div>
         <div class="card__container">
-          <CardPoster :img-src="card.imgTitle" />
+          <CardPoster class="card__item_1" :img-src="card.imgTitle" />
           <CardBody
+            class="card__item_2"
             :age-limit="card.ageLimit"
             :country="card.country"
             :duration="card.duration"
@@ -84,7 +85,11 @@ const listPageHandler = () => {
               :start-show="new Date(card.start)"
             />
           </CardBody>
-          <FilmSeans :dates="props.card.dates" @choose-time="chooseTimeHandler" />
+          <FilmSeans
+            class="card__item_3"
+            :dates="props.card.dates"
+            @choose-time="chooseTimeHandler"
+          />
         </div>
         <SpinnerWrapper v-if="currentState()">
           <FilmSeats
@@ -106,8 +111,31 @@ const listPageHandler = () => {
 
   &__container {
     display: grid;
-    grid-template-columns: max-content 2fr 1fr;
+    grid-template: 1fr 1fr / max-content 2fr 1fr;
+    grid-template-areas:
+      'poster body body'
+      'seans seans seans';
     grid-column-gap: 0.5rem;
+
+    @media (width <= 1370px) {
+      grid-template-areas:
+        'poster body seans'
+        'poster body seans';
+    }
+  }
+
+  &__item {
+    &_1 {
+      grid-area: poster;
+    }
+
+    &_2 {
+      grid-area: body;
+    }
+
+    &_3 {
+      grid-area: seans;
+    }
   }
 }
 </style>

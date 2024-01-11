@@ -71,8 +71,15 @@ const isTimeExpired = (initialTime: string, date: number) => {
 
 <style scoped>
 .film-seans {
-  height: 22rem;
+  display: flex;
+  height: 15rem;
   overflow: auto;
+  gap: 8px;
+
+  @media (width <= 1370px) {
+    display: block;
+    height: 22rem;
+  }
 
   &__session {
     border: var(--primary-border);
@@ -80,7 +87,9 @@ const isTimeExpired = (initialTime: string, date: number) => {
     margin: 0.5rem 0;
 
     &:first-child {
-      margin-top: 0;
+      @media (width <= 1370px) {
+        margin-top: 0;
+      }
     }
   }
 
