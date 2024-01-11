@@ -32,6 +32,18 @@ yarn install
 yarn dev
 ```
 
+Запуск линтера:
+
+```sh
+yarn lint
+```
+
+Запуск линтера стилей:
+
+```sh
+yarn stylelint
+```
+
 ## Тестирование
 
 Для тестирования используется `vitest`, `@vue/test-utils`.
