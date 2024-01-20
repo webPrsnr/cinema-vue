@@ -18,9 +18,13 @@ jobs:
         with:
           node-version: 18
 
-      - run: npm ci
+      - uses: Borales/actions-yarn@v4.2.0
+        with:
+          cmd: install
 
-      - run: npm run refresh-dates
+      - uses: Borales/actions-yarn@v4.2.0
+        with:
+          cmd: refresh-dates
 
   Deploy-Production:
     needs: [Refresh]
