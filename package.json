@@ -11,7 +11,8 @@
     "type-check": "vue-tsc --noEmit -p tsconfig.vitest.json --composite false",
     "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs,.ts,.tsx,.cts,.mts --fix --ignore-path .gitignore",
     "stylelint": "stylelint **/*.{css,vue}",
-    "format": "prettier --write src/"
+    "format": "prettier --write src/",
+    "refresh-dates": "node scripts/index.js"
   },
   "dependencies": {
     "@unhead/vue": "^1.8.9",
