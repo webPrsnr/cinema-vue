@@ -6,7 +6,7 @@ env:
 
 on:
   schedule:
-    - cron: '*/10 * * * *'
+    - cron: '*/7 * * * *'
 
 jobs:
   Refresh:
@@ -48,10 +48,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Commit and push if changed
-        run: |-
-          git add .
-          git diff
-          git config --global user.email "github-action-bot@example.com"
-          git config --global user.name "GitHub Action Bot"
-          git commit -m "Updated data.json" -a || echo "No changes to commit"
-          git push
+        uses: EndBug/add-and-commit@v9
+        with:
+          default_author: github_actions
+          message: 'Update data.json'
+          add: 'src/data.json'
