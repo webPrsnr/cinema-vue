@@ -26,6 +26,13 @@ jobs:
         with:
           cmd: refresh-dates
 
+      - name: Commit and push if changed
+        uses: EndBug/add-and-commit@v9
+        with:
+          default_author: github_actions
+          message: 'Update data.json'
+          add: 'src/data.json'
+
   Deploy-Production:
     needs: [Refresh]
     runs-on: ubuntu-latest
@@ -43,14 +50,3 @@ jobs:
 
       - name: Deploy Project Artifacts
         run: vercel deploy --prebuilt --prod --token=${{ secrets.VERCEL_TOKEN }}
-  Commit-If-Changed:
-    needs: [Deploy-Production]
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v3
-      - name: Commit and push if changed
-        uses: EndBug/add-and-commit@v9
-        with:
-          default_author: github_actions
-          message: 'Update data.json'
-          add: 'src/data.json'
