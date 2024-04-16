@@ -24,7 +24,7 @@
     "imgTitle": "krik",
     "dates": [
       {
-        "date": 1706603259725,
+        "date": 1713291459395,
         "session": [
           { "time": "10.00", "totalSeats": 48, "reserved": [2, 3, 4, 10] },
           { "time": "12.00", "totalSeats": 48, "reserved": [3, 7] },
@@ -35,7 +35,7 @@
         ]
       },
       {
-        "date": 1706703259725,
+        "date": 1713301704116,
         "session": [
           { "time": "10.00", "totalSeats": 48, "reserved": [2, 3, 4, 10] },
           { "time": "12.00", "totalSeats": 48, "reserved": [3, 7] },
@@ -46,7 +46,7 @@
         ]
       },
       {
-        "date": 1706803259725,
+        "date": 1713401704116,
         "session": [
           { "time": "10.00", "totalSeats": 48, "reserved": [2, 3, 4, 10] },
           { "time": "12.00", "totalSeats": 48, "reserved": [3, 7] },
@@ -72,7 +72,7 @@
     "imgTitle": "ferrari",
     "dates": [
       {
-        "date": 1706603259725,
+        "date": 1713291459395,
         "session": [
           { "time": "10.00", "totalSeats": 48, "reserved": [2, 3, 4, 10] },
           { "time": "12.00", "totalSeats": 48, "reserved": [3, 7] },
@@ -83,7 +83,7 @@
         ]
       },
       {
-        "date": 1706703259725,
+        "date": 1713301704116,
         "session": [
           { "time": "10.00", "totalSeats": 48, "reserved": [2, 3, 4, 10] },
           { "time": "12.00", "totalSeats": 48, "reserved": [] },
@@ -94,7 +94,7 @@
         ]
       },
       {
-        "date": 1706803259725,
+        "date": 1713401704116,
         "session": [
           { "time": "10.00", "totalSeats": 48, "reserved": [2, 3, 4, 10] },
           { "time": "12.00", "totalSeats": 48, "reserved": [] },
@@ -137,7 +137,7 @@
     "imgTitle": "elki",
     "dates": [
       {
-        "date": 1706603259725,
+        "date": 1713291459395,
         "session": [
           { "time": "10.00", "totalSeats": 48, "reserved": [2, 3, 4, 10] },
           { "time": "12.00", "totalSeats": 48, "reserved": [3, 7] },
@@ -148,7 +148,7 @@
         ]
       },
       {
-        "date": 1706703259725,
+        "date": 1713301704116,
         "session": [
           { "time": "10.00", "totalSeats": 48, "reserved": [2, 3, 4, 10] },
           { "time": "12.00", "totalSeats": 48, "reserved": [] },
@@ -159,7 +159,7 @@
         ]
       },
       {
-        "date": 1706803259725,
+        "date": 1713401704116,
         "session": [
           { "time": "10.00", "totalSeats": 48, "reserved": [2, 3, 4, 10] },
           { "time": "12.00", "totalSeats": 48, "reserved": [] },
@@ -191,7 +191,7 @@
     "imgTitle": "bogatir",
     "dates": [
       {
-        "date": 1706603259725,
+        "date": 1713291459395,
         "session": [
           { "time": "10.00", "totalSeats": 48, "reserved": [2, 3, 4, 10] },
           { "time": "12.00", "totalSeats": 48, "reserved": [3, 7] },
@@ -202,7 +202,7 @@
         ]
       },
       {
-        "date": 1706703259725,
+        "date": 1713301704116,
         "session": [
           { "time": "10.00", "totalSeats": 48, "reserved": [2, 3, 4, 10] },
           { "time": "12.00", "totalSeats": 48, "reserved": [] },
@@ -213,7 +213,7 @@
         ]
       },
       {
-        "date": 1706803259725,
+        "date": 1713401704116,
         "session": [
           { "time": "10.00", "totalSeats": 48, "reserved": [2, 3, 4, 10] },
           { "time": "12.00", "totalSeats": 48, "reserved": [] },
@@ -239,7 +239,7 @@
     "imgTitle": "asstral",
     "dates": [
       {
-        "date": 1706603259725,
+        "date": 1713291459395,
         "session": [
           { "time": "10.00", "totalSeats": 48, "reserved": [2, 3, 4, 10] },
           { "time": "12.00", "totalSeats": 48, "reserved": [3, 7] },
@@ -250,7 +250,7 @@
         ]
       },
       {
-        "date": 1706703259725,
+        "date": 1713301704116,
         "session": [
           { "time": "10.00", "totalSeats": 48, "reserved": [2, 3, 4, 10] },
           { "time": "12.00", "totalSeats": 48, "reserved": [] },
@@ -261,7 +261,7 @@
         ]
       },
       {
-        "date": 1706803259725,
+        "date": 1713401704116,
         "session": [
           { "time": "10.00", "totalSeats": 48, "reserved": [2, 3, 4, 10] },
           { "time": "12.00", "totalSeats": 48, "reserved": [] },
@@ -297,7 +297,7 @@
     "imgTitle": "bremen",
     "dates": [
       {
-        "date": 1706603259725,
+        "date": 1713291459395,
         "session": [
           { "time": "10.00", "totalSeats": 48, "reserved": [2, 3, 4, 10] },
           { "time": "12.00", "totalSeats": 48, "reserved": [3, 7] },
@@ -308,7 +308,7 @@
         ]
       },
       {
-        "date": 1706703259725,
+        "date": 1713301704116,
         "session": [
           { "time": "10.00", "totalSeats": 48, "reserved": [2, 3, 4, 10] },
           { "time": "12.00", "totalSeats": 48, "reserved": [] },
@@ -319,7 +319,7 @@
         ]
       },
       {
-        "date": 1706803259725,
+        "date": 1713401704116,
         "session": [
           { "time": "10.00", "totalSeats": 48, "reserved": [2, 3, 4, 10] },
           { "time": "12.00", "totalSeats": 48, "reserved": [] },
@@ -352,7 +352,7 @@
     "imgTitle": "holop",
     "dates": [
       {
-        "date": 1706603259725,
+        "date": 1713291459395,
         "session": [
           { "time": "10.00", "totalSeats": 48, "reserved": [2, 3, 4, 10] },
           { "time": "12.00", "totalSeats": 48, "reserved": [3, 7] },
@@ -363,7 +363,7 @@
         ]
       },
       {
-        "date": 1706703259725,
+        "date": 1713301704116,
         "session": [
           { "time": "10.00", "totalSeats": 48, "reserved": [2, 3, 4, 10] },
           { "time": "12.00", "totalSeats": 48, "reserved": [] },
@@ -374,7 +374,7 @@
         ]
       },
       {
-        "date": 1706803259725,
+        "date": 1713401704116,
         "session": [
           { "time": "10.00", "totalSeats": 48, "reserved": [2, 3, 4, 10] },
           { "time": "12.00", "totalSeats": 48, "reserved": [] },

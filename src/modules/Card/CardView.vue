@@ -30,7 +30,6 @@ useHead({
   title: `В-Синема. ${props.card.name}`,
   meta: [{ name: 'description', content: props.card.description }]
 })
-
 const { currentState, toggle } = useToggle()
 enableOpacity()
 
